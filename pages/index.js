@@ -15,7 +15,11 @@ import Dropzone from "../components/DropZone";
 import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
-import { Done } from "@mui/icons-material";
+
+const SOCKET_URL =
+  process.env.NODE_ENV === "development"
+    ? "ws://localhost:4000"
+    : "ws://woony.ml/kamuifile_backend";
 
 export default function Home() {
   const [connect, setConnect] = useState(false);
@@ -33,10 +37,9 @@ export default function Home() {
   const socketRecv = useRef();
   const sendPeer = useRef();
   const recvPeer = useRef();
-  //
 
   const ioJoin = () => {
-    socketRecv.current = io.connect("ws://localhost:4000");
+    socketRecv.current = io.connect(SOCKET_URL);
 
     socketRecv.current.on("all users", (user) => {
       //console.log("create user");
@@ -59,7 +62,7 @@ export default function Home() {
   };
 
   const ioConnect = () => {
-    socket.current = io.connect("ws://localhost:4000");
+    socket.current = io.connect(SOCKET_URL);
     socket.current.on("create room done", (roomID) => {
       setSenderRoomID(roomID);
     });
