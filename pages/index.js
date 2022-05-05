@@ -19,7 +19,8 @@ import Progress from "../components/Progress";
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
     ? "ws://localhost:4000"
-    : "wss://woony.ml/kamuifile_backend";
+    : "wss://woony.ml";
+const PATH_URL = process.env.NODE_ENV === "development" ? "/" : "/backend";
 
 export default function Home() {
   const [connect, setConnect] = useState(false);
@@ -39,7 +40,7 @@ export default function Home() {
   const recvPeer = useRef();
 
   const ioJoin = () => {
-    socketRecv.current = io.connect(SOCKET_URL);
+    socketRecv.current = io.connect(SOCKET_URL, { path: PATH_URL });
 
     socketRecv.current.on("all users", (user) => {
       //console.log("create user");
@@ -62,7 +63,7 @@ export default function Home() {
   };
 
   const ioConnect = () => {
-    socket.current = io.connect(SOCKET_URL);
+    socket.current = io.connect(SOCKET_URL, { path: PATH_URL });
     socket.current.on("create room done", (roomID) => {
       setSenderRoomID(roomID);
     });
