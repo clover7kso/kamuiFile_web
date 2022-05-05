@@ -19,7 +19,7 @@ import Progress from "../components/Progress";
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
     ? "ws://localhost:4000"
-    : "/kamuifile_backend";
+    : "wss://woony.ml/kamuifile_backend";
 
 export default function Home() {
   const [connect, setConnect] = useState(false);
