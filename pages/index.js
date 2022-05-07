@@ -1,5 +1,6 @@
 import {
   Button,
+  CircularProgress,
   Container,
   Paper,
   Stack,
@@ -20,14 +21,16 @@ const SOCKET_URL =
   process.env.NODE_ENV === "development"
     ? "ws://localhost:4000"
     : "wss://woony.ml";
-const PATH_URL = process.env.NODE_ENV === "development" ? "/" : "/backend";
+const PATH_URL = process.env.NODE_ENV === "development" ? "" : "/backend";
 
 export default function Home() {
   const [connect, setConnect] = useState(false);
-  const [kamuiScale, setKamuiScale] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const [senderRoomID, setSenderRoomID] = useState("");
   const [joinRoomID, setJoinRoomID] = useState("");
+  const regex = /\d{6}/;
+
   const [refresh, setRefresh] = useState(false);
 
   const file = useRef();
@@ -54,11 +57,16 @@ export default function Home() {
       //console.log(recvPeer);
       recvPeer.current.signal(payload.signal);
       setConnect(true);
+      setLoading(false);
     });
 
     socketRecv.current.on("room full", () => {
       //console.log("room full");
       alert("room is full");
+    });
+
+    socketRecv.current.on("cant find room", (user) => {
+      setLoading(false);
     });
   };
 
@@ -334,17 +342,30 @@ export default function Home() {
                   variant="outlined"
                   type="number"
                   onChange={(e) => setJoinRoomID(e.target.value)}
+                  error={joinRoomID !== "" && !regex.test(joinRoomID)}
+                  helperText={
+                    joinRoomID !== "" && !regex.test(joinRoomID)
+                      ? "type 6 digit number"
+                      : ""
+                  }
                 />
                 <Button
+                  disabled={loading}
                   variant="contained"
                   component="span"
-                  sx={{ width: "100%" }}
+                  sx={{ width: "100%", height: 40 }}
                   onClick={() => {
+                    if (!regex.test(joinRoomID)) return;
+                    setLoading(true);
                     ioJoin();
                     socketRecv.current.emit("join room", joinRoomID);
                   }}
                 >
-                  Drop me files!
+                  {loading ? (
+                    <CircularProgress color="WHITE" size={22} />
+                  ) : (
+                    "Drop me files!"
+                  )}
                 </Button>
               </Stack>
             ) : (
@@ -377,6 +398,7 @@ export default function Home() {
                         sx={{
                           justifyContent: "flex-end",
                           alignItems: "flex-end",
+                          maxWidth: 230,
                         }}
                       >
                         <Typography variant="body2" noWrap>
@@ -388,14 +410,14 @@ export default function Home() {
                             variant="body2"
                             noWrap
                             sx={{
-                              maxWidth: 200,
+                              maxWidth: 140,
                             }}
                           >
                             {item.name}
                           </Typography>
                           {item.file ? (
                             <Button
-                              sx={{ p: 0, ml: 2 }}
+                              sx={{ p: 0, ml: 1 }}
                               onClick={() => fileDownload(item.file, item.name)}
                             >
                               <Typography
@@ -418,6 +440,7 @@ export default function Home() {
                   (item) => item.progress !== 100
                 ) ? null : (
                   <Button
+                    required
                     variant="contained"
                     component="span"
                     sx={{ width: "100%" }}
