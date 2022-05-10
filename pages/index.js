@@ -21,7 +21,7 @@ import Head from "next/head";
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
     ? "ws://localhost:4000"
-    : "wss://woony.ml";
+    : "wss://kamuifile.com";
 const PATH_URL = process.env.NODE_ENV === "development" ? "" : "/backend";
 
 export default function Home() {
