@@ -16,6 +16,7 @@ import Dropzone from "../components/DropZone";
 import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
+import Head from "next/head";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -26,6 +27,7 @@ const PATH_URL = process.env.NODE_ENV === "development" ? "" : "/backend";
 export default function Home() {
   const [connect, setConnect] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [sendLoading, setSendLoading] = useState(false);
 
   const [senderRoomID, setSenderRoomID] = useState("");
   const [joinRoomID, setJoinRoomID] = useState("");
@@ -74,6 +76,7 @@ export default function Home() {
     socket.current = io.connect(SOCKET_URL, { path: PATH_URL });
     socket.current.on("create room done", (roomID) => {
       setSenderRoomID(roomID);
+      setSendLoading(false);
     });
 
     socket.current.on("user joined", (payload) => {
@@ -214,6 +217,10 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
+      <Head>
+        <title>Kamui File - Transfer your files</title>
+      </Head>
+
       <Stack spacing={5} sx={{ minWidth: 300 }}>
         <Paper
           sx={{ pl: 3, pr: 3, pt: 8, pb: 8, borderRadius: 5 }}
@@ -227,25 +234,39 @@ export default function Home() {
               </Typography>
             </Stack>
 
-            <Dropzone
-              connect={connect}
-              senderRoomID={senderRoomID}
-              onChange={async (files) => {
-                ioConnect();
-                file.current = files;
-                fileInfo.current = await files.map((item) => {
-                  return {
-                    name: item.name,
-                    type: "." + item.name.split(".").pop(),
-                    progress: 0,
-                  };
-                });
+            {!sendLoading ? (
+              <Dropzone
+                connect={connect}
+                senderRoomID={senderRoomID}
+                onChange={async (files) => {
+                  setSendLoading(true);
+                  ioConnect();
+                  file.current = files;
+                  fileInfo.current = await files.map((item) => {
+                    return {
+                      name: item.name,
+                      type: "." + item.name.split(".").pop(),
+                      progress: 0,
+                    };
+                  });
 
-                setRefresh((prev) => !prev);
+                  setRefresh((prev) => !prev);
 
-                socket.current.emit("create room");
-              }}
-            />
+                  socket.current.emit("create room");
+                }}
+              />
+            ) : (
+              <Stack
+                sx={{
+                  width: 300,
+                  height: 150,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <CircularProgress color="primary" size={22} />
+              </Stack>
+            )}
 
             {fileInfo.current && (
               <Stack
@@ -364,7 +385,7 @@ export default function Home() {
                   {loading ? (
                     <CircularProgress color="WHITE" size={22} />
                   ) : (
-                    "Drop me files!"
+                    "KAMUI!"
                   )}
                 </Button>
               </Stack>
