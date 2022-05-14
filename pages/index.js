@@ -18,7 +18,7 @@ import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import Head from "next/head";
-import logo from "../public/logo.webp";
+import logo from "../public/logo.png";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"

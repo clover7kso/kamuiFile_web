@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
-import ic_folder_open from "../public/ic_folder_open.webp";
-import ic_folder_close from "../public/ic_folder_close.webp";
+import ic_folder_open from "../public/ic_folder_open.png";
+import ic_folder_close from "../public/ic_folder_close.png";
 import { motion } from "framer-motion";
 import Timer from "./Timer";
 
