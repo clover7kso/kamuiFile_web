@@ -1,13 +1,14 @@
 import {
+  AppBar,
   Button,
   CircularProgress,
-  Container,
   Paper,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { useRef, useState } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import SimplePeerFiles from "simple-peer-files";
@@ -17,6 +18,7 @@ import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import Head from "next/head";
+import logo from "../public/logo.webp";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -221,7 +223,34 @@ export default function Home() {
         <title>Kamui File - Transfer your files</title>
       </Head>
 
-      <Stack spacing={5} sx={{ minWidth: 300 }}>
+      <Stack spacing={5} sx={{ minWidth: 300, pt: 2 }}>
+        <AppBar sx={{ bgcolor: "#ffffff" }}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Image
+              width={60}
+              height={60}
+              objectFit="contain"
+              alt="ic_folder_open"
+              src={logo}
+            />
+            <Typography
+              variant="h4"
+              sx={{
+                color: "#000000",
+                fontFamily: "Aldrich",
+                fontSize: 40,
+              }}
+            >
+              KAMUI FILE
+            </Typography>
+          </Stack>
+        </AppBar>
+
         <Paper
           sx={{ pl: 3, pr: 3, pt: 8, pb: 8, borderRadius: 5 }}
           elevation={3}

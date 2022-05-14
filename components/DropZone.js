@@ -2,8 +2,8 @@ import { Box, Stack, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
-import ic_folder_open from "../public/ic_folder_open.png";
-import ic_folder_close from "../public/ic_folder_close.png";
+import ic_folder_open from "../public/ic_folder_open.webp";
+import ic_folder_close from "../public/ic_folder_close.webp";
 import { motion } from "framer-motion";
 import Timer from "./Timer";
 
@@ -45,14 +45,14 @@ const Dropzone = ({ onChange, senderRoomID, connect }) => {
           transition={{ type: "spring", duration: 0.01, stiffness: 800 }}
         >
           <Image
-            width={80}
-            height={80}
-            src={isOn || isDragActive ? ic_folder_open : ic_folder_close}
+            width={100}
+            height={100}
             objectFit="contain"
             alt="ic_folder_open"
+            src={isOn || isDragActive ? ic_folder_open : ic_folder_close}
           />
         </motion.div>
-        <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
+        <Typography variant="body8" sx={{ color: "#aaaaaa", mt: -1 }}>
           {isDragActive ? "Drop it!!" : "Drag & Drop your files here"}
         </Typography>
       </Stack>

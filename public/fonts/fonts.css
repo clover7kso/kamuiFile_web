@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'DelaGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: local('DelaGothic'), 
+    url("./eot/DelaGothic.eot") format('eot'),
+    url("./otf/DelaGothic.otf") format('truetype'),
+    url("./ttf/DelaGothic.ttf") format('ttf'),
+    url("./woff/DelaGothic.woff") format('woff'),
+    url("./woff2/DelaGothic.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Helvetica'), 
+    url("./eot/HelveticaNeueLTPro-ThEx.eot") format('eot'),
+    url("./otf/HelveticaNeueLTPro-ThEx.otf") format('truetype'),
+    url("./ttf/HelveticaNeueLTPro-ThEx.ttf") format('ttf'),
+    url("./woff/HelveticaNeueLTPro-ThEx.woff") format('woff'),
+    url("./woff2/HelveticaNeueLTPro-ThEx.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'Aldrich';
+    font-style: normal;
+    src: local('Aldrich'), 
+    url("./eot/Aldrich.eot") format('eot'),
+    url("./otf/Aldrich.otf") format('truetype'),
+    url("./ttf/Aldrich.ttf") format('ttf'),
+    url("./woff/Aldrich.woff") format('woff'),
+    url("./woff2/Aldrich.woff2") format('woff2');
+}

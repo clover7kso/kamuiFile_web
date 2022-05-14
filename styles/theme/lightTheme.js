@@ -5,6 +5,9 @@ const lightTheme = createTheme({
     mode: "light",
     WHITE: { main: "#ffffff" },
   },
+  typography: {
+    fontFamily: "Arial, DelaGothic, Helvetica, Aldrich",
+  },
 });
 
 export default lightTheme;
