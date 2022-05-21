@@ -1,0 +1,7 @@
+{
+    "locales": ["ko", "en"],
+    "defaultLocale": "en",
+    "pages": {
+      "*": ["common"]
+    }
+  }

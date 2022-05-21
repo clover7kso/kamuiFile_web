@@ -19,6 +19,7 @@ import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import Head from "next/head";
 import logo from "../public/logo.png";
+import useTranslation from "next-translate/useTranslation";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -45,6 +46,7 @@ export default function Home() {
   const socketRecv = useRef();
   const sendPeer = useRef();
   const recvPeer = useRef();
+  let { t } = useTranslation("");
 
   const ioJoin = () => {
     socketRecv.current = io.connect(SOCKET_URL, { path: PATH_URL });
@@ -257,9 +259,9 @@ export default function Home() {
         >
           <Stack spacing={5} sx={{ alignItems: "center" }}>
             <Stack sx={{ alignItems: "center" }}>
-              <Typography variant="h5">Upload your files</Typography>
+              <Typography variant="h5"> {t("common:titleSend")}</Typography>
               <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
-                Fast and safe file transfer
+                {t("common:subtitleSend")}
               </Typography>
             </Stack>
 
@@ -364,7 +366,7 @@ export default function Home() {
                         setSenderRoomID(undefined);
                       }}
                     >
-                      Done
+                      {t("common:done")}
                     </Button>
                   )}
                 </Stack>
@@ -379,23 +381,23 @@ export default function Home() {
         >
           <Stack spacing={3}>
             <Stack sx={{ alignItems: "center" }}>
-              <Typography variant="h5">Receive your files</Typography>
+              <Typography variant="h5">{t("common:titleRecv")}</Typography>
               <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
-                I'm Ready
+                {t("common:subtitleRecv")}
               </Typography>
             </Stack>
             {!recvFileInfo.current ? (
               <Stack spacing={3}>
                 <TextField
                   id="outlined-basic"
-                  label="6 digit number"
+                  label={t("common:hintRecv")}
                   variant="outlined"
                   type="number"
                   onChange={(e) => setJoinRoomID(e.target.value)}
                   error={joinRoomID !== "" && !regex.test(joinRoomID)}
                   helperText={
                     joinRoomID !== "" && !regex.test(joinRoomID)
-                      ? "type 6 digit number"
+                      ? t("common:hintRecv")
                       : ""
                   }
                 />
@@ -414,7 +416,7 @@ export default function Home() {
                   {loading ? (
                     <CircularProgress color="WHITE" size={22} />
                   ) : (
-                    "KAMUI!"
+                    t("common:btnRecv")
                   )}
                 </Button>
               </Stack>
@@ -477,7 +479,7 @@ export default function Home() {
                                   maxWidth: 200,
                                 }}
                               >
-                                Download
+                                {t("common:download")}
                               </Typography>
                             </Button>
                           ) : undefined}
@@ -499,7 +501,7 @@ export default function Home() {
                       setRefresh((prev) => !prev);
                     }}
                   >
-                    Done
+                    {t("common:done")}
                   </Button>
                 )}
               </Stack>

@@ -6,6 +6,7 @@ import ic_folder_open from "../public/ic_folder_open.png";
 import ic_folder_close from "../public/ic_folder_close.png";
 import { motion } from "framer-motion";
 import Timer from "./Timer";
+import useTranslation from "next-translate/useTranslation";
 
 const Dropzone = ({ onChange, senderRoomID, connect }) => {
   const onDrop = useCallback((acceptedFiles) => {
@@ -15,6 +16,8 @@ const Dropzone = ({ onChange, senderRoomID, connect }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const [isOn, setIsOn] = useState(false);
+  let { t } = useTranslation("");
+
   return !senderRoomID ? (
     <Box
       sx={{
@@ -53,7 +56,7 @@ const Dropzone = ({ onChange, senderRoomID, connect }) => {
           />
         </motion.div>
         <Typography variant="body8" sx={{ color: "#aaaaaa", mt: -1 }}>
-          {isDragActive ? "Drop it!!" : "Drag & Drop your files here"}
+          {isDragActive ? t("common:dropZoneSend") : t("common:dropZoneSend")}
         </Typography>
       </Stack>
     </Box>
@@ -92,13 +95,7 @@ const Dropzone = ({ onChange, senderRoomID, connect }) => {
             </Box>
           ))}
         </Stack>
-        {!connect ? (
-          <Timer />
-        ) : (
-          <Typography variant="h5" sx={{ color: "#000000" }}>
-            Success Connect!
-          </Typography>
-        )}
+        {!connect ? <Timer /> : undefined}
       </Stack>
     </Box>
   );
