@@ -19,9 +19,9 @@ import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import Head from "next/head";
 import logo from "../public/logo.png";
+import ogtag from "../public/ogtag.png";
 import useTranslation from "next-translate/useTranslation";
-import { NextSeo } from "next-seo";
-import { DEFAULT_SEO } from "../util/seo";
+import { DefaultSeo, NextSeo } from "next-seo";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -224,7 +224,7 @@ export default function Home() {
       }}
     >
       <Head>
-        <NextSeo {...DEFAULT_SEO} />
+        <NextSeo {...DefaultSeo(ogtag)} />
         <title>Kamui File - Transfer your files</title>
       </Head>
 
