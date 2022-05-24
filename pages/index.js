@@ -224,7 +224,7 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
-      <NextSeo {...seoDefault(ogtag)} />
+      <NextSeo {...seoDefault} />
 
       <Stack spacing={5} sx={{ minWidth: 300, pt: 2 }}>
         <AppBar sx={{ bgcolor: "#ffffff" }}>
