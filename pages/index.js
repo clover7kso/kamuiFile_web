@@ -21,7 +21,8 @@ import Head from "next/head";
 import logo from "../public/logo.png";
 import ogtag from "../public/ogtag.png";
 import useTranslation from "next-translate/useTranslation";
-import { DefaultSeo, NextSeo } from "next-seo";
+import { NextSeo } from "next-seo";
+import { seoDefault } from "../util/seo";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -223,7 +224,7 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
-      <NextSeo {...DefaultSeo(ogtag)} />
+      <NextSeo {...seoDefault(ogtag)} />
 
       <Stack spacing={5} sx={{ minWidth: 300, pt: 2 }}>
         <AppBar sx={{ bgcolor: "#ffffff" }}>
