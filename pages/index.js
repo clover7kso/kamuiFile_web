@@ -223,10 +223,7 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
-      <Head>
-        <NextSeo {...DefaultSeo(ogtag)} />
-        <title>Kamui File - Transfer your files</title>
-      </Head>
+      <NextSeo {...DefaultSeo(ogtag)} />
 
       <Stack spacing={5} sx={{ minWidth: 300, pt: 2 }}>
         <AppBar sx={{ bgcolor: "#ffffff" }}>
