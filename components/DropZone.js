@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import Timer from "./Timer";
 import useTranslation from "next-translate/useTranslation";
 
-const Dropzone = ({ onChange, senderRoomID, connect }) => {
+const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     onChange(acceptedFiles);
@@ -95,7 +95,7 @@ const Dropzone = ({ onChange, senderRoomID, connect }) => {
             </Box>
           ))}
         </Stack>
-        {!connect ? <Timer /> : undefined}
+        {connect ? <Timer onTimerDone={onTimerDone} /> : undefined}
       </Stack>
     </Box>
   );

@@ -1,10 +1,14 @@
+import { Minimize } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import Progress from "./Progress";
 
-const Timer = () => {
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(30);
+const Timer = ({ onTimerDone }) => {
+  const [minutes, setMinutes] = useState(2);
+  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    if (minutes * 60 + seconds === 0) onTimerDone();
+  }, [minutes, seconds]);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -35,7 +39,7 @@ const Timer = () => {
       <Typography variant="h5">
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </Typography>
-      <Progress percentage={(seconds / 30) * 100} />
+      <Progress percentage={((minutes * 60 + seconds) / 120) * 100} />
     </Stack>
   );
 };
