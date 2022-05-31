@@ -150,7 +150,7 @@ const Receiver = () => {
     }
   }
   return (
-    <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 5 }} elevation={3}>
+    <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 2 }} elevation={3}>
       <Stack spacing={3}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5">{t("common:titleRecv")}</Typography>

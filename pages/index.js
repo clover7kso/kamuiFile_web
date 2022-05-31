@@ -1,12 +1,14 @@
-import { AppBar, Stack, Typography } from "@mui/material";
+import { AppBar, Stack, Typography, useMediaQuery } from "@mui/material";
 import Image from "next/image";
 import logo from "../public/logo.png";
 import { NextSeo } from "next-seo";
 import { seoDefault } from "../util/seo";
 import Sender from "../components/Sender";
 import Receiver from "../components/Receiver";
+import { DESKTOP } from "../util/mediaQuery";
 
 export default function Home() {
+  const isPc = useMediaQuery(DESKTOP);
   return (
     <Stack
       sx={{
@@ -19,7 +21,7 @@ export default function Home() {
     >
       <NextSeo {...seoDefault} />
 
-      <Stack spacing={5} sx={{ minWidth: 300, pt: 2 }}>
+      <Stack spacing={2} sx={{ minWidth: 300, pt: 2 }}>
         <AppBar sx={{ bgcolor: "#ffffff" }}>
           <Stack
             direction="row"

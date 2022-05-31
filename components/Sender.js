@@ -4,6 +4,7 @@ import {
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import { useRef, useState } from "react";
 import { io } from "socket.io-client";
@@ -14,6 +15,7 @@ import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import useTranslation from "next-translate/useTranslation";
+import { DESKTOP } from "../util/mediaQuery";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -22,6 +24,8 @@ const SOCKET_URL =
 const PATH_URL = process.env.NODE_ENV === "development" ? "" : "/backend";
 
 const Sender = () => {
+  const isPc = useMediaQuery(DESKTOP);
+  console.log(isPc);
   const [connect, setConnect] = useState(false);
   const [sendLoading, setSendLoading] = useState(false);
 
@@ -31,11 +35,8 @@ const Sender = () => {
 
   const file = useRef();
   const fileInfo = useRef();
-  const recvFileInfo = useRef();
   const socket = useRef();
-  const socketRecv = useRef();
   const sendPeer = useRef();
-  const recvPeer = useRef();
   let { t } = useTranslation("");
 
   const ioConnect = () => {
@@ -114,7 +115,7 @@ const Sender = () => {
   }
 
   return (
-    <Paper sx={{ pl: 3, pr: 3, pt: 8, pb: 8, borderRadius: 5 }} elevation={3}>
+    <Paper sx={{ pl: 3, pr: 3, pt: 8, pb: 8, borderRadius: 2 }} elevation={3}>
       <Stack spacing={5} sx={{ alignItems: "center" }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5"> {t("common:titleSend")}</Typography>
