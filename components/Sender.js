@@ -25,7 +25,7 @@ const PATH_URL = process.env.NODE_ENV === "development" ? "" : "/backend";
 
 const Sender = () => {
   const isPc = useMediaQuery(DESKTOP);
-  console.log(isPc);
+  //console.log(isPc);
   const [connect, setConnect] = useState(false);
   const [sendLoading, setSendLoading] = useState(false);
 
