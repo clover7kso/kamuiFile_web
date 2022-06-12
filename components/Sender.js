@@ -101,7 +101,7 @@ const Sender = () => {
         .then((transfer) => {
           transfer.on("progress", (sentBytes) => {
             let newArray = fileInfo.current;
-            newArray[i] = { ...newArray[i], progress: sentBytes };
+            newArray[i] = { ...newArray[i], progress: Math.round(sentBytes) };
             fileInfo.current = [...newArray];
             setRefresh((prev) => !prev);
           });

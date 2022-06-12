@@ -100,7 +100,10 @@ const Receiver = () => {
               transfer.on("progress", (sentBytes) => {
                 if (sentBytes === 100) return;
                 let newArray = recvFileInfo.current;
-                newArray[i] = { ...newArray[i], progress: sentBytes };
+                newArray[i] = {
+                  ...newArray[i],
+                  progress: Math.round(sentBytes),
+                };
                 recvFileInfo.current = [...newArray];
                 setRefresh((prev) => !prev);
               });
