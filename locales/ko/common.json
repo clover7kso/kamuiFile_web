@@ -7,5 +7,6 @@
     "hintRecv":"6자리 수 입력",
     "btnRecv":"받기",
     "done":"완료",
-    "download":"다운로드"
+    "download":"다운로드",
+    "copy":"숫자가 복사되었습니다."
 }

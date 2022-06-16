@@ -7,5 +7,6 @@
     "hintRecv":"6 digit number",
     "btnRecv":"Confirm",
     "done":"Done",
-    "download":"Download"
+    "download":"Download",    
+    "copy":"Number is copied"
 }

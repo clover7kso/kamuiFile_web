@@ -8,6 +8,7 @@ import "../styles/global.css";
 import { useRouter } from "next/router";
 import { pageview } from "../util/pageview";
 import lightTheme from "../styles/theme/lightTheme";
+import { SnackbarProvider } from "material-ui-snackbar-provider";
 
 const clientSideEmotionCache = createEmotionCache();
 const theme = responsiveFontSizes(lightTheme);
@@ -28,12 +29,19 @@ const MyApp = (props) => {
   }, [router.events]);
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <SnackbarProvider
+      SnackbarProps={{
+        autoHideDuration: 1000,
+        anchorOrigin: { vertical: "top", horizontal: "center" },
+      }}
+    >
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </SnackbarProvider>
   );
 };
 
