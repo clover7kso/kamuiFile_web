@@ -22,7 +22,7 @@ const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
     <Box
       sx={{
         backgroundColor: "#eceff566",
-        borderRadius: 5,
+        borderRadius: 1,
         border: "1px dashed grey",
         "&:hover": {
           backgroundColor: "#eceff5",
@@ -66,36 +66,39 @@ const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
         sx={{
           width: 300,
           alignItems: "center",
+          mb: 2,
         }}
         spacing={2}
       >
-        <Stack
-          direction="row"
-          sx={{
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-          spacing={2}
-        >
-          {senderRoomID.split("").map((item, index) => (
-            <Box
-              key={index}
-              sx={{
-                bgcolor: "#eceff566",
-                pl: 1,
-                pr: 1,
-                pt: 1.2,
-                pb: 1.2,
-                borderRadius: 1,
-              }}
-            >
-              <Typography variant="h5" sx={{ color: "#000000" }}>
-                {item}
-              </Typography>
-            </Box>
-          ))}
-        </Stack>
-        {connect ? <Timer onTimerDone={onTimerDone} /> : undefined}
+        {connect && <Timer onTimerDone={onTimerDone} />}
+        {connect && (
+          <Stack
+            direction="row"
+            sx={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            {senderRoomID.split("").map((item, index) => (
+              <Box
+                key={index}
+                sx={{
+                  bgcolor: "#eceff566",
+                  pl: 1.4,
+                  pr: 1.4,
+                  pt: 1.2,
+                  pb: 1.2,
+                  borderRadius: 1,
+                }}
+              >
+                <Typography variant="h5" sx={{ color: "#000000" }}>
+                  {item}
+                </Typography>
+              </Box>
+            ))}
+          </Stack>
+        )}
       </Stack>
     </Box>
   );

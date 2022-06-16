@@ -36,10 +36,9 @@ const Timer = ({ onTimerDone }) => {
       }}
       spacing={1}
     >
-      <Typography variant="h5">
+      <Typography variant="h4">
         {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
       </Typography>
-      <Progress percentage={((minutes * 60 + seconds) / 120) * 100} />
     </Stack>
   );
 };

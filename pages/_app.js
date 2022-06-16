@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
 import { CacheProvider } from "@emotion/react";
 import PropTypes from "prop-types";
-import { ThemeProvider, CssBaseline } from "@mui/material";
+import { responsiveFontSizes } from "@mui/material/styles";
+import { ThemeProvider, CssBaseline } from "@mui/material/";
 import createEmotionCache from "../util/createEmotionCache";
-import lightTheme from "../styles/theme/lightTheme";
 import "../styles/global.css";
 import { useRouter } from "next/router";
 import { pageview } from "../util/pageview";
+import lightTheme from "../styles/theme/lightTheme";
 
 const clientSideEmotionCache = createEmotionCache();
+const theme = responsiveFontSizes(lightTheme);
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -27,7 +29,7 @@ const MyApp = (props) => {
 
   return (
     <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>

@@ -30,11 +30,8 @@ const Receiver = () => {
 
   const [refresh, setRefresh] = useState(false);
 
-  const file = useRef();
-  const fileInfo = useRef();
   const recvFileInfo = useRef();
   const socketRecv = useRef();
-  const sendPeer = useRef();
   const recvPeer = useRef();
   let { t } = useTranslation("");
 
@@ -102,7 +99,7 @@ const Receiver = () => {
                 let newArray = recvFileInfo.current;
                 newArray[i] = {
                   ...newArray[i],
-                  progress: Math.round(sentBytes),
+                  progress: sentBytes.toFixed(1),
                 };
                 recvFileInfo.current = [...newArray];
                 setRefresh((prev) => !prev);
@@ -130,33 +127,13 @@ const Receiver = () => {
     return peer;
   }
 
-  function sendFile() {
-    // peer is the SimplePeer object connection to receiver
-    const spf = new SimplePeerFiles();
-    for (var i = 0; i < file.current.length; i++) {
-      ////console.log(i.toString());
-      spf
-        .send(sendPeer.current, i.toString(), file.current[i])
-        .then((transfer) => {
-          transfer.on("progress", (sentBytes) => {
-            let newArray = fileInfo.current;
-            newArray[i] = { ...newArray[i], progress: sentBytes };
-            fileInfo.current = [...newArray];
-            setRefresh((prev) => !prev);
-          });
-          transfer.on("done", () => {
-            //console.log("done");
-          });
-
-          transfer.start();
-        });
-    }
-  }
   return (
-    <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 2 }} elevation={3}>
+    <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 2 }} elevation={1}>
       <Stack spacing={3}>
         <Stack sx={{ alignItems: "center" }}>
-          <Typography variant="h5">{t("common:titleRecv")}</Typography>
+          <Typography variant="h5" sx={{ color: "#444444" }}>
+            {t("common:titleRecv")}
+          </Typography>
           <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
             {t("common:subtitleRecv")}
           </Typography>
@@ -180,7 +157,7 @@ const Receiver = () => {
               disabled={loading}
               variant="contained"
               component="span"
-              sx={{ width: "100%", height: 40 }}
+              sx={{ width: "100%", height: 40, color: "#ffffff" }}
               onClick={() => {
                 if (!regex.test(joinRoomID)) return;
                 setLoading(true);
@@ -196,7 +173,7 @@ const Receiver = () => {
             </Button>
           </Stack>
         ) : (
-          <Stack spacing={3}>
+          <Stack spacing={1.5}>
             {recvFileInfo.current.map((item, index) => {
               return (
                 <Stack
@@ -270,7 +247,7 @@ const Receiver = () => {
                 required
                 variant="contained"
                 component="span"
-                sx={{ width: "100%" }}
+                sx={{ width: "100%", color: "#ffffff" }}
                 onClick={() => {
                   recvFileInfo.current = undefined;
                   setRefresh((prev) => !prev);

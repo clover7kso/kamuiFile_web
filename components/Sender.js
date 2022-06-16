@@ -63,7 +63,7 @@ const Sender = () => {
 
     const peer = new Peer({
       initiator: false,
-      trickle: false,
+      trickle: true,
     });
 
     peer.on("signal", (signal) => {
@@ -101,7 +101,7 @@ const Sender = () => {
         .then((transfer) => {
           transfer.on("progress", (sentBytes) => {
             let newArray = fileInfo.current;
-            newArray[i] = { ...newArray[i], progress: Math.round(sentBytes) };
+            newArray[i] = { ...newArray[i], progress: sentBytes.toFixed(1) };
             fileInfo.current = [...newArray];
             setRefresh((prev) => !prev);
           });
@@ -115,10 +115,12 @@ const Sender = () => {
   }
 
   return (
-    <Paper sx={{ pl: 3, pr: 3, pt: 8, pb: 8, borderRadius: 2 }} elevation={3}>
-      <Stack spacing={5} sx={{ alignItems: "center" }}>
+    <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 2 }} elevation={1}>
+      <Stack spacing={2} sx={{ alignItems: "center" }}>
         <Stack sx={{ alignItems: "center" }}>
-          <Typography variant="h5"> {t("common:titleSend")}</Typography>
+          <Typography variant="h5" sx={{ color: "#444444" }}>
+            {t("common:titleSend")}
+          </Typography>
           <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
             {t("common:subtitleSend")}
           </Typography>
@@ -166,12 +168,11 @@ const Sender = () => {
 
         {fileInfo.current && (
           <Stack
-            spacing={2}
             sx={{
-              width: "90%",
+              width: "100%",
             }}
           >
-            <Stack spacing={3}>
+            <Stack spacing={1.5}>
               {fileInfo.current.map((item, index) => {
                 return (
                   <Stack
@@ -219,22 +220,25 @@ const Sender = () => {
                   </Stack>
                 );
               })}
-              {fileInfo.current.find((item) => item.progress !== 100) ? null : (
-                <Button
-                  variant="contained"
-                  component="span"
-                  sx={{ width: "100%" }}
-                  onClick={() => {
-                    fileInfo.current = undefined;
-                    setSenderRoomID(undefined);
-                  }}
-                >
-                  {t("common:done")}
-                </Button>
-              )}
             </Stack>
           </Stack>
         )}
+        {!connect &&
+        fileInfo.current &&
+        fileInfo.current.filter((item) => item.progress === "100.0").length ===
+          fileInfo.current.length ? (
+          <Button
+            variant="contained"
+            component="span"
+            sx={{ color: "#ffffff", width: "100%" }}
+            onClick={() => {
+              fileInfo.current = undefined;
+              setSenderRoomID(undefined);
+            }}
+          >
+            {t("common:done")}
+          </Button>
+        ) : null}
       </Stack>
     </Paper>
   );

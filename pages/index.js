@@ -21,30 +21,25 @@ export default function Home() {
     >
       <NextSeo {...seoDefault} />
 
-      <Stack spacing={2} sx={{ minWidth: 300, pt: 2 }}>
-        <AppBar sx={{ bgcolor: "#ffffff" }}>
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-          >
+      <Stack spacing={2} sx={{ minWidth: 300, pt: 4 }}>
+        <AppBar sx={{ bgcolor: "#ffffff", px: 2, py: 1 }} elevation={1}>
+          <Stack direction="row" alignItems="center" spacing={1}>
             <Image
-              width={60}
-              height={60}
+              width={40}
+              height={40}
               objectFit="contain"
               alt="ic_folder_open"
               src={logo}
             />
             <Typography
-              variant="h4"
+              variant={isPc ? "h4" : "h6"}
               sx={{
-                color: "#000000",
-                fontFamily: "Aldrich",
-                fontSize: 40,
+                color: "#444444",
+                fontSize: 32,
+                verticalAlign: "center",
               }}
             >
-              KAMUI FILE
+              Kamui File
             </Typography>
           </Stack>
         </AppBar>
