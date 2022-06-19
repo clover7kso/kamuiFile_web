@@ -19,7 +19,7 @@ export default function Home() {
       <NextSeo {...seoDefault} />
 
       <Stack spacing={2} sx={{ minWidth: 300, pt: 4 }}>
-        <Typography>pdf</Typography>
+        <Typography>Comming Soon</Typography>
       </Stack>
     </Stack>
   );
