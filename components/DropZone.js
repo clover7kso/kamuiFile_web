@@ -1,38 +1,26 @@
-import { Alert, Box, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import Image from "next/image";
-import ic_folder_open from "../public/ic_folder_open.png";
-import ic_folder_close from "../public/ic_folder_close.png";
+import ic_image_open from "../public/ic_image_open.png";
+import ic_image_close from "../public/ic_image_close.png";
 import { motion } from "framer-motion";
-import Timer from "./Timer";
 import useTranslation from "next-translate/useTranslation";
-import { useSnackbar } from "material-ui-snackbar-provider";
 
-const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
-  const snackbar = useSnackbar();
-
+const DropZone = ({ onChange, accept }) => {
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     onChange(acceptedFiles);
   }, []);
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept,
+    onDrop,
+  });
 
   const [isOn, setIsOn] = useState(false);
   let { t } = useTranslation("");
 
-  7;
-
-  const copyToClipboard = (content) => {
-    const el = document.createElement("textarea");
-    el.value = content;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
-  };
-
-  return !senderRoomID ? (
+  return (
     <Box
       sx={{
         backgroundColor: "#eceff566",
@@ -65,8 +53,8 @@ const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
             width={100}
             height={100}
             objectFit="contain"
-            alt="ic_folder_open"
-            src={isOn || isDragActive ? ic_folder_open : ic_folder_close}
+            alt="ic_image_open"
+            src={isOn || isDragActive ? ic_image_open : ic_image_close}
           />
         </motion.div>
         <Typography variant="body8" sx={{ color: "#aaaaaa", mt: -1 }}>
@@ -74,54 +62,7 @@ const Dropzone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
         </Typography>
       </Stack>
     </Box>
-  ) : (
-    <Box>
-      <Stack
-        sx={{
-          width: 300,
-          alignItems: "center",
-          mb: 2,
-        }}
-        spacing={2}
-      >
-        {connect && <Timer onTimerDone={onTimerDone} />}
-        {connect && (
-          <Stack
-            direction="row"
-            sx={{
-              width: "100%",
-              alignItems: "center",
-              justifyContent: "space-between",
-              cursor: "pointer",
-            }}
-            onClick={(e) => {
-              e.preventDefault();
-              snackbar.showMessage(`${t("common:copy")}`);
-              copyToClipboard(senderRoomID);
-            }}
-          >
-            {senderRoomID.split("").map((item, index) => (
-              <Box
-                key={index}
-                sx={{
-                  bgcolor: "#eceff566",
-                  pl: 1.4,
-                  pr: 1.4,
-                  pt: 1.2,
-                  pb: 1.2,
-                  borderRadius: 1,
-                }}
-              >
-                <Typography variant="h5" sx={{ color: "#000000" }}>
-                  {item}
-                </Typography>
-              </Box>
-            ))}
-          </Stack>
-        )}
-      </Stack>
-    </Box>
   );
 };
 
-export default Dropzone;
+export default DropZone;

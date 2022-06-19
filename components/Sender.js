@@ -10,7 +10,7 @@ import { useRef, useState } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import SimplePeerFiles from "simple-peer-files";
-import Dropzone from "../components/DropZone";
+import SendDropZone from "./SendDropZone";
 import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
@@ -116,7 +116,7 @@ const Sender = () => {
 
   return (
     <Paper sx={{ pl: 3, pr: 3, pt: 5, pb: 5, borderRadius: 2 }} elevation={1}>
-      <Stack spacing={2} sx={{ alignItems: "center" }}>
+      <Stack spacing={1.5} sx={{ alignItems: "center" }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
             {t("common:titleSend")}
@@ -127,7 +127,7 @@ const Sender = () => {
         </Stack>
 
         {!sendLoading ? (
-          <Dropzone
+          <SendDropZone
             onTimerDone={() => {
               fileInfo.current = undefined;
               setSenderRoomID(undefined);

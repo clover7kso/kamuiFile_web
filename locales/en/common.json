@@ -1,6 +1,12 @@
 {
     "titleSend":"Send",
+    "titleCompress":"Reduce Size",
+    "titleResize":"Resize Image",
+    "titleConverter":"Convert Image",
     "subtitleSend":"Fast and safe file transfer",
+    "subtitleCompress":"Effectively reduce image size",
+    "subtitleResize":"Resize Image by 25%, 50%, 75%",
+    "subtitleConverter":"Convert Image to other format",
     "dropZoneSend":"Drag & Drop",
     "titleRecv":"Receive",
     "subtitleRecv":"1:1 file transfer",

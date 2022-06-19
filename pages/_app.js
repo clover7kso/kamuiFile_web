@@ -2,19 +2,37 @@ import React, { useEffect } from "react";
 import { CacheProvider } from "@emotion/react";
 import PropTypes from "prop-types";
 import { responsiveFontSizes } from "@mui/material/styles";
-import { ThemeProvider, CssBaseline } from "@mui/material/";
+import {
+  ThemeProvider,
+  CssBaseline,
+  AppBar,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@mui/material/";
 import createEmotionCache from "../util/createEmotionCache";
 import "../styles/global.css";
 import { useRouter } from "next/router";
 import { pageview } from "../util/pageview";
 import lightTheme from "../styles/theme/lightTheme";
 import { SnackbarProvider } from "material-ui-snackbar-provider";
+import logo from "../public/logo.png";
+import { DESKTOP } from "../util/mediaQuery";
+import Image from "next/image";
+import Link from "next/link";
+
+const linkList = [
+  { href: "/", name: "TRANSFER" },
+  { href: "/image", name: "EDIT IMAGE" },
+  { href: "/pdf", name: "EDIT PDF" },
+];
 
 const clientSideEmotionCache = createEmotionCache();
 const theme = responsiveFontSizes(lightTheme);
 
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const isPc = useMediaQuery(DESKTOP);
 
   const router = useRouter();
   useEffect(() => {
@@ -38,6 +56,56 @@ const MyApp = (props) => {
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
+
+          <AppBar sx={{ bgcolor: "#ffffff", px: 3, py: 1 }} elevation={1}>
+            <Stack direction="row" sx={{ alignItems: "center" }} spacing={12}>
+              <Stack direction="row" spacing={1}>
+                <Image
+                  width={40}
+                  height={40}
+                  objectFit="contain"
+                  alt="ic_folder_open"
+                  src={logo}
+                />
+                <Typography
+                  variant="h4"
+                  sx={{
+                    fontSize: 32,
+                    color: "#000000",
+                    verticalAlign: "center",
+                    fontWeight: "bold",
+                  }}
+                >
+                  Kamui File
+                </Typography>
+              </Stack>
+
+              {isPc && (
+                <Stack direction="row" spacing={6}>
+                  {linkList.map((item, index) => {
+                    return (
+                      <Link href={item.href} key={index}>
+                        <Typography
+                          variant="body1"
+                          sx={{
+                            color:
+                              item.href === router.pathname
+                                ? "#00beff"
+                                : "#444444",
+                            verticalAlign: "center",
+                            cursor: "pointer",
+                          }}
+                        >
+                          {item.name}
+                        </Typography>
+                      </Link>
+                    );
+                  })}
+                </Stack>
+              )}
+            </Stack>
+          </AppBar>
+
           <Component {...pageProps} />
         </ThemeProvider>
       </CacheProvider>
