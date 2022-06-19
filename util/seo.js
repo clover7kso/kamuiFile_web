@@ -1,6 +1,6 @@
 export const seoDefault = {
   title: "Kamui File - Transfer your files",
-  description: "Fast and Safe P2P file transfer",
+  description: "Fast and Safe File Transfer",
   canonical: "https://kamuifile.com/",
   openGraph: {
     type: "website",

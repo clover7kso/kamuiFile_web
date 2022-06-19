@@ -1,7 +1,5 @@
-import { Minimize } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
-import Progress from "./Progress";
 
 const Timer = ({ onTimerDone }) => {
   const [minutes, setMinutes] = useState(2);

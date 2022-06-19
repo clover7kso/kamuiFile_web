@@ -1,6 +1,5 @@
 import {
   Button,
-  CircularProgress,
   Paper,
   Stack,
   ToggleButton,
@@ -8,14 +7,11 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import ICFile from "../public/ic_file.svg";
-import { Box } from "@mui/system";
+import { useState } from "react";
 import Progress from "./Progress";
 import useTranslation from "next-translate/useTranslation";
 import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
-import imageCompression from "browser-image-compression";
 import fileDownload from "js-file-download";
 
 const Resize = () => {

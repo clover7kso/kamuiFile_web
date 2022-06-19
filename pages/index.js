@@ -1,6 +1,4 @@
-import { AppBar, Stack, Typography, useMediaQuery } from "@mui/material";
-import Image from "next/image";
-import logo from "../public/logo.png";
+import { Stack, useMediaQuery } from "@mui/material";
 import { NextSeo } from "next-seo";
 import { seoDefault } from "../util/seo";
 import Sender from "../components/Sender";
