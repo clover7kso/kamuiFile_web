@@ -73,6 +73,7 @@ const Compress = () => {
 
         {fileInfo.infos.length === 0 && (
           <DropZone
+            icon="compress"
             accept={{
               "image/jpeg": [".jpeg", ".jpg", ".png", ".webp", ".bmp"],
               "image/png": [".jpeg", ".jpg", ".png", ".webp", ".bmp"],

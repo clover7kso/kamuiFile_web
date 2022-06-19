@@ -93,6 +93,7 @@ const Resize = () => {
 
         {fileInfo.infos.length === 0 && (
           <DropZone
+            icon="resize"
             accept={{
               "image/jpeg": [".jpeg", ".jpg", ".png", ".webp", ".bmp"],
               "image/png": [".jpeg", ".jpg", ".png", ".webp", ".bmp"],

@@ -82,6 +82,7 @@ const Converter = () => {
 
         {fileInfo.infos.length === 0 && (
           <DropZone
+            icon="converter"
             accept={{
               "image/jpeg": [
                 ".jpeg",
