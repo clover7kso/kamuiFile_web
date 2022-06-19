@@ -1,8 +1,8 @@
 {
     "titleSend":"보내기",
-    "titleCompress":"이미지압축",
-    "titleResize":"이미지축소",
-    "titleConverter":"이미지변환",
+    "titleCompress":"압축",
+    "titleResize":"축소",
+    "titleConverter":"변환",
     "subtitleSend":"빠르고 안전한 파일전송",
     "subtitleCompress":"JPEG, JPG, PNG, WEBP, BMP를 효과적으로 이미지 용량 줄이기",
     "subtitleResize":"JPEG, JPG, PNG, WEBP, BMP를 너비, 높이를 25%, 50%, 75% 정도 줄이기",
