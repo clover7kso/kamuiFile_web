@@ -3,7 +3,7 @@ import useTranslation from "next-translate/useTranslation";
 export const seoDefault = () => {
   const { t } = useTranslation("");
   return {
-    title: t("common:og:title"),
+    title: t("common:og_title"),
     description: "Fast and Safe File Transfer",
     canonical: "https://kamuifile.com/",
     openGraph: {
