@@ -15,6 +15,7 @@ import useTranslation from "next-translate/useTranslation";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import SimplePeerFiles from "simple-peer-files";
+import bytesToSize from "../util/bytesToSize";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -100,6 +101,7 @@ const Receiver = () => {
                 newArray[i] = {
                   ...newArray[i],
                   progress: sentBytes.toFixed(1),
+                  progressSize: newArray[i].fileSize * (sentBytes / 100),
                 };
                 recvFileInfo.current = [...newArray];
                 setRefresh((prev) => !prev);
@@ -112,6 +114,7 @@ const Receiver = () => {
                     ...newArray[i],
                     file: await file,
                     progress: 100,
+                    progressSize: newArray[i].fileSize,
                   };
                   recvFileInfo.current = [...newArray];
                   setRefresh((prev) => !prev);
@@ -206,6 +209,9 @@ const Receiver = () => {
                     }}
                   >
                     <Typography variant="body2" noWrap>
+                      {bytesToSize(item.progressSize) +
+                        "/" +
+                        bytesToSize(item.fileSize)}{" "}
                       {item.progress}%
                     </Typography>
                     <Progress percentage={item.progress} />

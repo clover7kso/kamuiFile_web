@@ -16,6 +16,7 @@ import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import useTranslation from "next-translate/useTranslation";
 import { DESKTOP } from "../util/mediaQuery";
+import bytesToSize from "../util/bytesToSize";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -101,7 +102,11 @@ const Sender = () => {
         .then((transfer) => {
           transfer.on("progress", (sentBytes) => {
             let newArray = fileInfo.current;
-            newArray[i] = { ...newArray[i], progress: sentBytes.toFixed(1) };
+            newArray[i] = {
+              ...newArray[i],
+              progress: sentBytes.toFixed(1),
+              progressSize: newArray[i].fileSize * (sentBytes / 100),
+            };
             fileInfo.current = [...newArray];
             setRefresh((prev) => !prev);
           });
@@ -141,10 +146,13 @@ const Sender = () => {
               ioConnect();
               file.current = files;
               fileInfo.current = await files.map((item) => {
+                console.log(item.size);
                 return {
                   name: item.name,
                   type: "." + item.name.split(".").pop(),
                   progress: 0,
+                  fileSize: item.size,
+                  progressSize: 0,
                 };
               });
 
@@ -204,6 +212,10 @@ const Sender = () => {
                       }}
                     >
                       <Typography variant="body2" noWrap>
+                        {bytesToSize(item.progressSize) +
+                          "/" +
+                          bytesToSize(item.fileSize)}{" "}
+                        {"  "}
                         {item.progress}%
                       </Typography>
                       <Progress percentage={item.progress} />
