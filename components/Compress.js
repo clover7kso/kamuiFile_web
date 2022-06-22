@@ -6,6 +6,7 @@ import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
 import imageCompression from "browser-image-compression";
 import fileDownload from "js-file-download";
+import bytesToSize from "../util/bytesToSize";
 
 const Compress = () => {
   const isPc = useMediaQuery(DESKTOP);
@@ -42,12 +43,20 @@ const Compress = () => {
           `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
         ); // smaller than maxSizeMB
 
+        setFileInfo((prev) => {
+          let newArray = prev.infos;
+          newArray[i] = {
+            ...newArray[i],
+            compressSize: compressedFile.size,
+          };
+          return { infos: newArray };
+        });
+
         setFiles((prev) => {
           let newArray = prev.files;
           newArray[i] = compressedFile;
           return { files: newArray };
         });
-
         //fileDownload(compressedFile, compressedFile.name);
         // write your own logic
       } catch (error) {
@@ -86,6 +95,7 @@ const Compress = () => {
                     name: item.name,
                     type: "." + item.name.split(".").pop(),
                     progress: 0,
+                    fileSize: item.size,
                   };
                 }),
               });
@@ -140,6 +150,9 @@ const Compress = () => {
                       }}
                     >
                       <Typography variant="body2" noWrap>
+                        {bytesToSize(item.fileSize)} {"  "}
+                        {item.compressSize &&
+                          " -> " + bytesToSize(item.compressSize) + "  "}
                         {item.progress}%
                       </Typography>
                       <Progress percentage={item.progress} />
