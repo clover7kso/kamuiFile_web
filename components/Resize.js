@@ -7,7 +7,7 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Progress from "./Progress";
 import useTranslation from "next-translate/useTranslation";
 import { DESKTOP } from "../util/mediaQuery";
@@ -20,7 +20,22 @@ const Resize = () => {
   const [files, setFiles] = useState({ files: [] });
   const [fileInfo, setFileInfo] = useState({ infos: [] });
   const [resize, setResize] = useState(25);
+  useEffect(() => {
+    setFileInfo((prev) => {
+      let newArray = prev.infos;
+      return {
+        infos: newArray.map((item, index) => {
+          return {
+            ...item,
+            resizeWidth: Math.floor(item.orgWidth * ((100 - resize) / 100)),
+            resizeHeight: Math.floor(item.orgHeight * ((100 - resize) / 100)),
+          };
+        }),
+      };
+    });
+  }, [resize]);
   const [resizeStart, setResizeStart] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
   let { t } = useTranslation("");
 
@@ -105,20 +120,28 @@ const Resize = () => {
                   };
                 }),
               });
+
               dropFiles.map((item, index) => {
                 let reader = new FileReader();
-                reader.onloadend = () => {
+                reader.onloadend = async () => {
+                  let orig_src = new Image();
+                  orig_src.src = reader.result;
                   setFileInfo((prev) => {
                     let newArray = prev.infos;
                     newArray[index] = {
                       ...newArray[index],
                       preview: reader.result,
+                      orgWidth: orig_src.width,
+                      orgHeight: orig_src.height,
+                      resizeWidth: orig_src.width * ((100 - resize) / 100),
+                      resizeHeight: orig_src.height * ((100 - resize) / 100),
                     };
                     return { infos: newArray };
                   });
                 };
                 reader.readAsDataURL(item);
               });
+              setRefresh((prev) => !prev);
             }}
           />
         )}
@@ -135,7 +158,9 @@ const Resize = () => {
                 exclusive
                 color="primary"
                 value={resize}
-                onChange={(e) => setResize(parseInt(e.target.value))}
+                onChange={(e) => {
+                  setResize(parseInt(e.target.value));
+                }}
                 fullWidth
               >
                 <ToggleButton value={25}>25%</ToggleButton>
@@ -169,7 +194,8 @@ const Resize = () => {
                       }}
                     >
                       <Typography variant="body2" noWrap>
-                        {item.progress}%
+                        {item.orgWidth}x{item.orgHeight}
+                        {" -> "} {item.resizeWidth}x{item.resizeHeight}{" "}
                       </Typography>
                       <Progress percentage={item.progress} />
                       <Stack direction="row">
