@@ -24,7 +24,7 @@ import Link from "next/link";
 const linkList = [
   { href: "/", name: "TRANSFER" },
   { href: "/image", name: "EDIT IMAGE" },
-  { href: "/pdf", name: "EDIT PDF" },
+  //{ href: "/pdf", name: "EDIT PDF" },
 ];
 
 const clientSideEmotionCache = createEmotionCache();

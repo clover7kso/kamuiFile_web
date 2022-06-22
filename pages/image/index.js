@@ -1,6 +1,6 @@
 import { Stack, useMediaQuery } from "@mui/material";
 import { NextSeo } from "next-seo";
-import { seoDefault } from "../../util/seo";
+import { seoDefault, seoImage } from "../../util/seo";
 import { DESKTOP } from "../../util/mediaQuery";
 import Compress from "../../components/Compress";
 import Resize from "../../components/Resize";
@@ -19,7 +19,7 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
-      <NextSeo {...seoDefault} />
+      <NextSeo {...seoImage} />
 
       <Stack spacing={2} sx={{ pt: 4 }} direction={isPc ? "row" : "column"}>
         <Stack sx={{ maxWidth: 350 }}>
