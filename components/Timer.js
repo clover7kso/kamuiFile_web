@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 
 const Timer = ({ onTimerDone }) => {
-  const [minutes, setMinutes] = useState(2);
+  const [minutes, setMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
   useEffect(() => {
     if (minutes * 60 + seconds === 0) onTimerDone();
