@@ -149,7 +149,6 @@ const Converter = () => {
               >
                 <ToggleButton value={"jpeg"}>jpeg</ToggleButton>
                 <ToggleButton value={"png"}>png</ToggleButton>
-                <ToggleButton value={"gif"}>gif</ToggleButton>
                 <ToggleButton value={"webp"}>webp</ToggleButton>
               </ToggleButtonGroup>
 
@@ -179,7 +178,9 @@ const Converter = () => {
                       }}
                     >
                       <Typography variant="body2" noWrap>
-                        {item.progress}%
+                        {item.type.replace(".", "")}
+                        {" -> "}
+                        {type}
                       </Typography>
                       <Progress percentage={item.progress} />
                       <Stack direction="row">
