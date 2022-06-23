@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { CacheProvider } from "@emotion/react";
 import PropTypes from "prop-types";
 import { responsiveFontSizes } from "@mui/material/styles";
@@ -9,7 +9,10 @@ import {
   Stack,
   Typography,
   useMediaQuery,
-} from "@mui/material/";
+  Button,
+  MenuItem,
+  Menu,
+} from "@mui/material";
 import createEmotionCache from "../util/createEmotionCache";
 import "../styles/global.css";
 import { useRouter } from "next/router";
@@ -20,6 +23,7 @@ import logo from "../public/logo.png";
 import { DESKTOP } from "../util/mediaQuery";
 import Image from "next/image";
 import Link from "next/link";
+import Hamburger from "hamburger-react";
 
 const linkList = [
   { href: "/", name: "TRANSFER" },
@@ -33,11 +37,13 @@ const theme = responsiveFontSizes(lightTheme);
 const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const isPc = useMediaQuery(DESKTOP);
+  const [isHamburgerOpen, setHamburgerOpen] = useState(false);
 
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url) => {
       pageview(url);
+      setHamburgerOpen(false);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
 
@@ -58,7 +64,14 @@ const MyApp = (props) => {
           <CssBaseline />
 
           <AppBar sx={{ bgcolor: "#ffffff", px: 3, py: 1 }} elevation={1}>
-            <Stack direction="row" sx={{ alignItems: "center" }} spacing={12}>
+            <Stack
+              direction="row"
+              sx={{
+                alignItems: "center",
+                justifyContent: !isPc && "space-between",
+              }}
+              spacing={12}
+            >
               <Stack direction="row" spacing={1}>
                 <Image
                   width={40}
@@ -74,13 +87,14 @@ const MyApp = (props) => {
                     color: "#000000",
                     verticalAlign: "center",
                     fontWeight: "bold",
+                    whiteSpace: "nowrap",
                   }}
                 >
                   Kamui File
                 </Typography>
               </Stack>
 
-              {isPc && (
+              {isPc ? (
                 <Stack direction="row" spacing={6}>
                   {linkList.map((item, index) => {
                     return (
@@ -102,9 +116,48 @@ const MyApp = (props) => {
                     );
                   })}
                 </Stack>
+              ) : (
+                <Hamburger
+                  toggled={isHamburgerOpen}
+                  toggle={setHamburgerOpen}
+                  color="#00beff"
+                />
               )}
             </Stack>
           </AppBar>
+          {!isPc && isHamburgerOpen && (
+            <Stack
+              sx={{
+                pt: 12,
+                position: "absolute",
+                left: 0,
+                width: "100%",
+                height: "100vh",
+                backgroundColor: "#ffffffcc",
+                zIndex: 1,
+                alignItems: "center",
+              }}
+              spacing={2}
+            >
+              {linkList.map((item, index) => {
+                return (
+                  <Link href={item.href} key={index}>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        verticalAlign: "center",
+                        color:
+                          item.href === router.pathname ? "#00beff" : "#999999",
+                        pointer: "cursor",
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                  </Link>
+                );
+              })}
+            </Stack>
+          )}
 
           <Component {...pageProps} />
         </ThemeProvider>
