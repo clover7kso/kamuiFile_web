@@ -1,4 +1,6 @@
 {
+    "TRANSFER":"파일전송",
+    "EDIT IMAGE":"이미지 압축, 축소, 변환",
     "titleSend":"보내기",
     "titleCompress":"압축",
     "titleResize":"축소",

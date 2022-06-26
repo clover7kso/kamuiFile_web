@@ -24,12 +24,7 @@ import { DESKTOP } from "../util/mediaQuery";
 import Image from "next/image";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
-
-const linkList = [
-  { href: "/", name: "TRANSFER" },
-  { href: "/image", name: "EDIT IMAGE" },
-  //{ href: "/pdf", name: "EDIT PDF" },
-];
+import useTranslation from "next-translate/useTranslation";
 
 const clientSideEmotionCache = createEmotionCache();
 const theme = responsiveFontSizes(lightTheme);
@@ -51,6 +46,14 @@ const MyApp = (props) => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
+
+  let { t } = useTranslation("");
+
+  const linkList = [
+    { href: "/", name: t("common:TRANSFER") },
+    { href: "/image", name: t("common:EDIT IMAGE") },
+    //{ href: "/pdf", name: "EDIT PDF" },
+  ];
 
   return (
     <SnackbarProvider

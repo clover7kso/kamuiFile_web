@@ -1,9 +1,11 @@
 {
+    "TRANSFER":"Transfer",
+    "EDIT IMAGE":"Image Compress, Resize, Convert",
     "titleSend":"Send",
     "titleCompress":"Compress",
     "titleResize":"Resize",
     "titleConverter":"Convert",
-    "subtitleSend":"Fast and safe file transfer",
+    "subtitleSend":"Fast and Safe file transfer",
     "subtitleCompress":"Effectively reduce image size - JPEG, JPG, PNG, WEBP, BMP",
     "subtitleResize":"Resize Image by 25%, 50%, 75% - JPEG, JPG, PNG, WEBP, BMP",
     "subtitleConverter":"JPEG, JPG, PNG, WEBP, BMP, SVG, ICO to JPEG, PNG, WEBP",
