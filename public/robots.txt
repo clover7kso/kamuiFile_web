@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://kamuifile.com
+
+# Sitemaps
+Sitemap: https://kamuifile.com/sitemap.xml

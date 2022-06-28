@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap --config sitemap.config.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -23,6 +23,7 @@
     "material-ui-snackbar-provider": "2.0.0",
     "next": "12.1.5",
     "next-seo": "5.4.0",
+    "next-sitemap": "3.1.7",
     "next-translate": "1.4.0",
     "prop-types": "15.8.1",
     "react": "18.0.0",
