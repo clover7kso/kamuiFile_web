@@ -9,7 +9,7 @@ import ic_resize_close from "../public/ic_resize_close.png";
 import ic_compress_open from "../public/ic_compress_open.png";
 import ic_compress_close from "../public/ic_compress_close.png";
 import { motion } from "framer-motion";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 
 const listIcon = [
   {
@@ -43,7 +43,7 @@ const DropZone = ({ onChange, accept, icon }) => {
   });
 
   const [isOn, setIsOn] = useState(false);
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   return (
     <Box
@@ -87,7 +87,7 @@ const DropZone = ({ onChange, accept, icon }) => {
           />
         </motion.div>
         <Typography variant="body8" sx={{ color: "#aaaaaa", mt: -1 }}>
-          {isDragActive ? t("common:dropZoneSend") : t("common:dropZoneSend")}
+          {isDragActive ? t("dropZoneSend") : t("dropZoneSend")}
         </Typography>
       </Stack>
     </Box>

@@ -1,12 +1,16 @@
 import { Stack, useMediaQuery } from "@mui/material";
 import { NextSeo } from "next-seo";
-import { seoDefault } from "../util/seo";
+import { metaGen } from "../util/seo";
 import Sender from "../components/Sender";
 import Receiver from "../components/Receiver";
 import { DESKTOP } from "../util/mediaQuery";
 
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
+
 export default function Home() {
   const isPc = useMediaQuery(DESKTOP);
+  const { t } = useTranslation("seo_file");
   return (
     <Stack
       sx={{
@@ -17,7 +21,13 @@ export default function Home() {
         bgcolor: "#eceff5",
       }}
     >
-      <NextSeo {...seoDefault} />
+      <NextSeo
+        {...metaGen({
+          title: t("title"),
+          description: t("description"),
+          url: t("url"),
+        })}
+      />
 
       <Stack spacing={2} sx={{ pt: 4 }} direction={isPc ? "row" : "column"}>
         <Stack sx={{ minWidth: 350 }}>
@@ -30,3 +40,9 @@ export default function Home() {
     </Stack>
   );
 }
+
+export const getStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ["common", "seo_file"])),
+  },
+});

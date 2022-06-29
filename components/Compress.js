@@ -1,7 +1,7 @@
 import { Button, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Progress from "./Progress";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
 import imageCompression from "browser-image-compression";
@@ -13,7 +13,7 @@ const Compress = () => {
 
   const [files, setFiles] = useState({ files: [] });
   const [fileInfo, setFileInfo] = useState({ infos: [] });
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const compress = async () => {
     files.files.map(async (file, i) => {
@@ -70,13 +70,13 @@ const Compress = () => {
       <Stack spacing={2} sx={{ alignItems: "center", minWidth: 300 }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("common:titleCompress")}
+            {t("titleCompress")}
           </Typography>
           <Typography
             variant="body8"
             sx={{ color: "#aaaaaa", textAlign: "center" }}
           >
-            {t("common:subtitleCompress")}
+            {t("subtitleCompress")}
           </Typography>
         </Stack>
 
@@ -184,7 +184,7 @@ const Compress = () => {
                                 maxWidth: 200,
                               }}
                             >
-                              {t("common:download")}
+                              {t("download")}
                             </Typography>
                           </Button>
                         )}
@@ -207,7 +207,7 @@ const Compress = () => {
                 compress();
               }}
             >
-              {t("common:titleCompress")}
+              {t("titleCompress")}
             </Button>
           )}
         {fileInfo.infos.length !== 0 &&
@@ -221,7 +221,7 @@ const Compress = () => {
               setFileInfo({ infos: [] });
             }}
           >
-            {t("common:done")}
+            {t("done")}
           </Button>
         ) : null}
       </Stack>

@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import Progress from "./Progress";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
 import fileDownload from "js-file-download";
@@ -37,7 +37,7 @@ const Resize = () => {
   const [resizeStart, setResizeStart] = useState(false);
   const [refresh, setRefresh] = useState(false);
 
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const resizeImage = function (file, factor, index) {
     let reader = new FileReader();
@@ -92,13 +92,13 @@ const Resize = () => {
       <Stack spacing={2} sx={{ alignItems: "center", minWidth: 300 }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("common:titleResize")}
+            {t("titleResize")}
           </Typography>
           <Typography
             variant="body8"
             sx={{ color: "#aaaaaa", textAlign: "center" }}
           >
-            {t("common:subtitleResize")}
+            {t("subtitleResize")}
           </Typography>
         </Stack>
 
@@ -226,7 +226,7 @@ const Resize = () => {
                                 maxWidth: 200,
                               }}
                             >
-                              {t("common:download")}
+                              {t("download")}
                             </Typography>
                           </Button>
                         )}
@@ -249,7 +249,7 @@ const Resize = () => {
                 compress();
               }}
             >
-              {t("common:titleResize")}
+              {t("titleResize")}
             </Button>
           )}
         {fileInfo.infos.length !== 0 &&
@@ -264,7 +264,7 @@ const Resize = () => {
               setResizeStart(false);
             }}
           >
-            {t("common:done")}
+            {t("done")}
           </Button>
         ) : null}
       </Stack>

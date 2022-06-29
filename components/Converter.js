@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import Progress from "./Progress";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
 import fileDownload from "js-file-download";
@@ -21,7 +21,7 @@ const Converter = () => {
   const [fileInfo, setFileInfo] = useState({ infos: [] });
   const [type, setType] = useState("jpeg");
   const [convertStart, setConvertStart] = useState(false);
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const convertImage = function (file, type, index) {
     let reader = new FileReader();
@@ -70,13 +70,13 @@ const Converter = () => {
       <Stack spacing={2} sx={{ alignItems: "center", minWidth: 300 }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("common:titleConverter")}
+            {t("titleConverter")}
           </Typography>
           <Typography
             variant="body8"
             sx={{ color: "#aaaaaa", textAlign: "center" }}
           >
-            {t("common:subtitleConverter")}
+            {t("subtitleConverter")}
           </Typography>
         </Stack>
 
@@ -211,7 +211,7 @@ const Converter = () => {
                                 maxWidth: 200,
                               }}
                             >
-                              {t("common:download")}
+                              {t("download")}
                             </Typography>
                           </Button>
                         )}
@@ -237,7 +237,7 @@ const Converter = () => {
                 });
               }}
             >
-              {t("common:titleConverter")}
+              {t("titleConverter")}
             </Button>
           )}
         {fileInfo.infos.length !== 0 &&
@@ -252,7 +252,7 @@ const Converter = () => {
               setFileInfo({ infos: [] });
             }}
           >
-            {t("common:done")}
+            {t("done")}
           </Button>
         ) : null}
       </Stack>

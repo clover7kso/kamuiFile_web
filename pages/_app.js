@@ -9,9 +9,6 @@ import {
   Stack,
   Typography,
   useMediaQuery,
-  Button,
-  MenuItem,
-  Menu,
 } from "@mui/material";
 import createEmotionCache from "../util/createEmotionCache";
 import "../styles/global.css";
@@ -24,7 +21,7 @@ import { DESKTOP } from "../util/mediaQuery";
 import Image from "next/image";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
-import useTranslation from "next-translate/useTranslation";
+import { appWithTranslation, useTranslation } from "next-i18next";
 
 const clientSideEmotionCache = createEmotionCache();
 const theme = responsiveFontSizes(lightTheme);
@@ -33,6 +30,7 @@ const MyApp = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
   const isPc = useMediaQuery(DESKTOP);
   const [isHamburgerOpen, setHamburgerOpen] = useState(false);
+  const { t } = useTranslation("common");
 
   const router = useRouter();
   useEffect(() => {
@@ -47,11 +45,9 @@ const MyApp = (props) => {
     };
   }, [router.events]);
 
-  let { t } = useTranslation("");
-
   const linkList = [
-    { href: "/", name: t("common:TRANSFER") },
-    { href: "/image", name: t("common:EDIT IMAGE") },
+    { href: "/", name: t("TRANSFER") },
+    { href: "/image", name: t("EDIT IMAGE") },
     //{ href: "/pdf", name: "EDIT PDF" },
   ];
 
@@ -169,7 +165,7 @@ const MyApp = (props) => {
   );
 };
 
-export default MyApp;
+export default appWithTranslation(MyApp);
 
 MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,

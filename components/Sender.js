@@ -14,7 +14,7 @@ import SendDropZone from "./SendDropZone";
 import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import bytesToSize from "../util/bytesToSize";
 
@@ -38,7 +38,7 @@ const Sender = () => {
   const fileInfo = useRef();
   const socket = useRef();
   const sendPeer = useRef();
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const ioConnect = () => {
     socket.current = io.connect(SOCKET_URL, { path: PATH_URL });
@@ -124,10 +124,10 @@ const Sender = () => {
       <Stack spacing={1.5} sx={{ alignItems: "center" }}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("common:titleSend")}
+            {t("titleSend")}
           </Typography>
           <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
-            {t("common:subtitleSend")}
+            {t("subtitleSend")}
           </Typography>
         </Stack>
 
@@ -248,7 +248,7 @@ const Sender = () => {
               setSenderRoomID(undefined);
             }}
           >
-            {t("common:done")}
+            {t("done")}
           </Button>
         ) : null}
       </Stack>

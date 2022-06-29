@@ -6,7 +6,7 @@ import ic_folder_open from "../public/ic_folder_open.png";
 import ic_folder_close from "../public/ic_folder_close.png";
 import { motion } from "framer-motion";
 import Timer from "./Timer";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { useSnackbar } from "material-ui-snackbar-provider";
 
 const SendDropZone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
@@ -19,7 +19,7 @@ const SendDropZone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const [isOn, setIsOn] = useState(false);
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const copyToClipboard = (content) => {
     const el = document.createElement("textarea");
@@ -68,7 +68,7 @@ const SendDropZone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
           />
         </motion.div>
         <Typography variant="body8" sx={{ color: "#aaaaaa", mt: -1 }}>
-          {isDragActive ? t("common:dropZoneSend") : t("common:dropZoneSend")}
+          {isDragActive ? t("dropZoneSend") : t("dropZoneSend")}
         </Typography>
       </Stack>
     </Box>
@@ -93,7 +93,7 @@ const SendDropZone = ({ onChange, senderRoomID, connect, onTimerDone }) => {
             }}
             onClick={(e) => {
               e.preventDefault();
-              snackbar.showMessage(`${t("common:copy")}`);
+              snackbar.showMessage(`${t("copy")}`);
               copyToClipboard(senderRoomID);
             }}
           >

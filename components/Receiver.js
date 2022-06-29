@@ -11,7 +11,7 @@ import ICFile from "../public/ic_file.svg";
 import { Box } from "@mui/system";
 import Progress from "../components/Progress";
 import { useRef, useState } from "react";
-import useTranslation from "next-translate/useTranslation";
+import { useTranslation } from "next-i18next";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import SimplePeerFiles from "simple-peer-files";
@@ -34,7 +34,7 @@ const Receiver = () => {
   const recvFileInfo = useRef();
   const socketRecv = useRef();
   const recvPeer = useRef();
-  let { t } = useTranslation("");
+  const { t } = useTranslation("common");
 
   const ioJoin = () => {
     socketRecv.current = io.connect(SOCKET_URL, { path: PATH_URL });
@@ -135,24 +135,24 @@ const Receiver = () => {
       <Stack spacing={3}>
         <Stack sx={{ alignItems: "center" }}>
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("common:titleRecv")}
+            {t("titleRecv")}
           </Typography>
           <Typography variant="body8" sx={{ color: "#aaaaaa" }}>
-            {t("common:subtitleRecv")}
+            {t("subtitleRecv")}
           </Typography>
         </Stack>
         {!recvFileInfo.current ? (
           <Stack spacing={3}>
             <TextField
               id="outlined-basic"
-              label={t("common:hintRecv")}
+              label={t("hintRecv")}
               variant="outlined"
               type="number"
               onChange={(e) => setJoinRoomID(e.target.value)}
               error={joinRoomID !== "" && !regex.test(joinRoomID)}
               helperText={
                 joinRoomID !== "" && !regex.test(joinRoomID)
-                  ? t("common:hintRecv")
+                  ? t("hintRecv")
                   : ""
               }
             />
@@ -171,7 +171,7 @@ const Receiver = () => {
               {loading ? (
                 <CircularProgress color="WHITE" size={22} />
               ) : (
-                t("common:btnRecv")
+                t("btnRecv")
               )}
             </Button>
           </Stack>
@@ -237,7 +237,7 @@ const Receiver = () => {
                               maxWidth: 200,
                             }}
                           >
-                            {t("common:download")}
+                            {t("download")}
                           </Typography>
                         </Button>
                       ) : undefined}
@@ -259,7 +259,7 @@ const Receiver = () => {
                   setRefresh((prev) => !prev);
                 }}
               >
-                {t("common:done")}
+                {t("done")}
               </Button>
             )}
           </Stack>
