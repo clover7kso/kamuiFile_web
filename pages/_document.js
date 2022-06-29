@@ -29,6 +29,10 @@ export default class MyDocument extends Document {
               `,
             }}
           />
+          <meta
+            name="naver-site-verification"
+            content="dcc9e19072665a845fa9acc87be6f62c49b4787c"
+          />
         </Head>
         <body>
           <Main />
