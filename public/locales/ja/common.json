@@ -1,7 +1,7 @@
 {
     "TRANSFER":"ファイル転送",
     "EDIT IMAGE":"画像圧縮、縮小、変換",
-    "titleSend":"送信",
+    "titleSend":"ファイルシェア",
     "titleCompress":"圧縮",
     "titleResize":"サイズ変更",
     "titleConverter":"変換",
@@ -9,7 +9,7 @@
     "subtitleCompress":"画像サイズを効果的に縮小 - JPEG、 JPG、 PNG、 WEBP、 BMP",
     "subtitleResize":"画像のサイズを 25％、50％、75％変更 - JPEG、 JPG、 PNG、 WEBP、 BMP",
     "subtitleConverter":"JPEG、JPG、PNG、WEBP、BMP、SVG、ICOからJPEG、PNG、WEBP",
-    "dropZoneSend":"ドラッグドロップ",
+    "dropZoneSend":"Drag & Drop",
     "titleRecv":"受け取る",
     "subtitleRecv":"1：1ファイル転送",
     "hintRecv":"6桁の数字",
