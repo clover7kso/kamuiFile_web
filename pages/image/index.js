@@ -5,9 +5,11 @@ import { DESKTOP } from "../../util/mediaQuery";
 import Compress from "../../components/Compress";
 import Resize from "../../components/Resize";
 import Converter from "../../components/Converter";
+
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
-export default function Home() {
+export default function Image() {
   const isPc = useMediaQuery(DESKTOP);
   const { t } = useTranslation("seo_image");
 
@@ -42,3 +44,11 @@ export default function Home() {
     </Stack>
   );
 }
+
+export const getStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "seo_image"])),
+    },
+  };
+};
