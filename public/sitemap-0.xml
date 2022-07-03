@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://kamuifile.com</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/about</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/image</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ko/about</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/id/about</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ja/about</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ko/image</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/id/image</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ja/image</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ko</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/id</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://kamuifile.com/ja</loc><lastmod>2022-07-03T14:23:49.027Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ko/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/id/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ja/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/hi/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/bn/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/es/about</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ko/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/id/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ja/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/hi/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/bn/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/es/image</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ko</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/id</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/ja</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/hi</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/bn</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://kamuifile.com/es</loc><lastmod>2022-07-03T14:54:17.563Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
