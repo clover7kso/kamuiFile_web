@@ -85,7 +85,7 @@ const Receiver = () => {
       peer.on("data", (fileInfo) => {
         let recvFile = new TextDecoder("utf-8").decode(fileInfo);
         recvFile = JSON.parse(recvFile);
-        ////console.log(recvFile.fileInfo);
+        //console.log(recvFile.fileInfo);
         if (recvFile.fileInfo) {
           recvFileInfo.current = recvFile.fileInfo;
           setRefresh((prev) => !prev);
@@ -93,7 +93,7 @@ const Receiver = () => {
           const spf = new SimplePeerFiles();
           for (var i = 0; i < recvFileInfo.current.length; i++) {
             // peer is the SimplePeer object connection to sender
-            ////console.log(i);
+            //console.log(i);
             spf.receive(recvPeer.current, i.toString()).then((transfer) => {
               transfer.on("progress", (sentBytes) => {
                 if (sentBytes === 100) return;

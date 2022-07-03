@@ -30,18 +30,18 @@ const Compress = () => {
         },
       };
 
-      console.log("originalFile instanceof Blob", file instanceof Blob); // true
-      console.log(`originalFile size ${file.size / 1024 / 1024} MB`);
+      //console.log("originalFile instanceof Blob", file instanceof Blob); // true
+      //console.log(`originalFile size ${file.size / 1024 / 1024} MB`);
 
       try {
         const compressedFile = await imageCompression(file, options);
-        console.log(
-          "compressedFile instanceof Blob",
-          compressedFile instanceof Blob
-        ); // true
-        console.log(
-          `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
-        ); // smaller than maxSizeMB
+        //console.log(
+        //  "compressedFile instanceof Blob",
+        //  compressedFile instanceof Blob
+        //); // true
+        //console.log(
+        //  `compressedFile size ${compressedFile.size / 1024 / 1024} MB`
+        //); // smaller than maxSizeMB
 
         setFileInfo((prev) => {
           let newArray = prev.infos;
@@ -60,7 +60,7 @@ const Compress = () => {
         //fileDownload(compressedFile, compressedFile.name);
         // write your own logic
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     });
   };

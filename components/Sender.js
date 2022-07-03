@@ -96,7 +96,7 @@ const Sender = () => {
     // peer is the SimplePeer object connection to receiver
     const spf = new SimplePeerFiles();
     for (var i = 0; i < file.current.length; i++) {
-      ////console.log(i.toString());
+      //console.log(i.toString());
       spf
         .send(sendPeer.current, i.toString(), file.current[i])
         .then((transfer) => {
@@ -146,7 +146,7 @@ const Sender = () => {
               ioConnect();
               file.current = files;
               fileInfo.current = await files.map((item) => {
-                console.log(item.size);
+                //console.log(item.size);
                 return {
                   name: item.name,
                   type: "." + item.name.split(".").pop(),

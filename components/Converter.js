@@ -39,7 +39,7 @@ const Converter = () => {
         setFiles((prev) => {
           let newArray = prev.files;
           newArray[index] = blob;
-          console.log(newArray[index]);
+          //console.log(newArray[index]);
           return { files: newArray };
         });
         setFileInfo((prev) => {

@@ -45,9 +45,9 @@ const Resize = () => {
       let orig_src = new Image();
       orig_src.src = reader.result;
       let resize_canvas = document.createElement("canvas");
-      console.log(orig_src.width);
-      console.log((100 - factor) / 100);
-      console.log(orig_src.width * ((100 - factor) / 100));
+      //console.log(orig_src.width);
+      //console.log((100 - factor) / 100);
+      //console.log(orig_src.width * ((100 - factor) / 100));
       resize_canvas.width = orig_src.width * ((100 - factor) / 100);
       resize_canvas.height = orig_src.height * ((100 - factor) / 100);
       resize_canvas
