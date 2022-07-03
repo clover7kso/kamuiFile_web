@@ -48,6 +48,7 @@ const MyApp = (props) => {
   const linkList = [
     { href: "/", name: t("TRANSFER") },
     { href: "/image", name: t("EDIT IMAGE") },
+    { href: "/about", name: t("ABOUT") },
     //{ href: "/pdf", name: "EDIT PDF" },
   ];
 
