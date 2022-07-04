@@ -16,6 +16,7 @@ import { io } from "socket.io-client";
 import Peer from "simple-peer";
 import SimplePeerFiles from "simple-peer-files";
 import bytesToSize from "../util/bytesToSize";
+import { mRecv } from "../util/googleEvent";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -255,6 +256,7 @@ const Receiver = () => {
                 component="span"
                 sx={{ width: "100%", color: "#ffffff" }}
                 onClick={() => {
+                  mRecv();
                   recvFileInfo.current = undefined;
                   setRefresh((prev) => !prev);
                 }}

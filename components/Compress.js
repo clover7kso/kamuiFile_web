@@ -7,6 +7,7 @@ import DropZone from "./DropZone";
 import imageCompression from "browser-image-compression";
 import fileDownload from "js-file-download";
 import bytesToSize from "../util/bytesToSize";
+import { mCompress } from "../util/googleEvent";
 
 const Compress = () => {
   const isPc = useMediaQuery(DESKTOP);
@@ -204,6 +205,7 @@ const Compress = () => {
               component="span"
               sx={{ color: "#ffffff", width: "100%" }}
               onClick={() => {
+                mCompress();
                 compress();
               }}
             >

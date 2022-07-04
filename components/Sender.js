@@ -17,6 +17,7 @@ import Progress from "../components/Progress";
 import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import bytesToSize from "../util/bytesToSize";
+import { mSend } from "../util/googleEvent";
 
 const SOCKET_URL =
   process.env.NODE_ENV === "development"
@@ -142,6 +143,7 @@ const Sender = () => {
             connect={connect}
             senderRoomID={senderRoomID}
             onChange={async (files) => {
+              mSend();
               setSendLoading(true);
               ioConnect();
               file.current = files;

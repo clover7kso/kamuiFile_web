@@ -29,6 +29,23 @@ export default class MyDocument extends Document {
               `,
             }}
           />
+
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_EVENT_MONITOR}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '${process.env.NEXT_EVENT_MONITOR}');
+            `,
+            }}
+          />
+
           <meta
             name="naver-site-verification"
             content="dcc9e19072665a845fa9acc87be6f62c49b4787c"

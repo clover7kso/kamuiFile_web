@@ -13,6 +13,7 @@ import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
 import DropZone from "./DropZone";
 import fileDownload from "js-file-download";
+import { mConvert } from "../util/googleEvent";
 
 const Converter = () => {
   const isPc = useMediaQuery(DESKTOP);
@@ -231,6 +232,7 @@ const Converter = () => {
               component="span"
               sx={{ color: "#ffffff", width: "100%" }}
               onClick={() => {
+                mConvert();
                 files.files.map(async (file, i) => {
                   setConvertStart(true);
                   convertImage(file, type, i);
