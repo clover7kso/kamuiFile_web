@@ -48,7 +48,14 @@ const MyApp = (props) => {
   const linkList = [
     { href: "/", name: t("TRANSFER") },
     { href: "/image", name: t("EDIT IMAGE") },
-    { href: "/about", name: t("ABOUT") },
+    { href: "/service", name: t("SERVICE") },
+    //{ href: "/pdf", name: "EDIT PDF" },
+  ];
+
+  const footerList = [
+    { href: "/about", name: "About" },
+    { href: "/contact", name: "Contact" },
+    { href: "/terms", name: "Terms and Conditions" },
     //{ href: "/pdf", name: "EDIT PDF" },
   ];
 
@@ -159,7 +166,50 @@ const MyApp = (props) => {
             </Stack>
           )}
 
-          <Component {...pageProps} />
+          <Stack
+            sx={{
+              bgcolor: "#eceff5",
+              height: "100vh",
+              justifyContent: "space-between",
+            }}
+          >
+            <Component {...pageProps} />
+
+            <Stack sx={{ bgcolor: "#eceff5", p: 2 }}>
+              <Stack direction="row">
+                {footerList.map((item, index) => (
+                  <Stack direction="row">
+                    <Link href={item.href}>
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          cursor: "pointer",
+                          fontWeight:
+                            item.href === router.pathname ? "bold" : "none",
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
+                    </Link>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        mx: 1,
+                        fontWeight:
+                          item.href === router.pathname ? "bold" : "none",
+                        pointer: "cursor",
+                      }}
+                    >
+                      {index !== footerList.length - 1 && " | "}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Stack>
+              <Typography variant="body2">
+                © 2021. Woon. all rights reserved.
+              </Typography>
+            </Stack>
+          </Stack>
         </ThemeProvider>
       </CacheProvider>
     </SnackbarProvider>

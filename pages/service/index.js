@@ -1,17 +1,15 @@
-import { Stack, useMediaQuery } from "@mui/material";
-import { NextSeo } from "next-seo";
-import { metaGen } from "../../util/seo";
-import { DESKTOP } from "../../util/mediaQuery";
-import Compress from "../../components/Compress";
-import Resize from "../../components/Resize";
-import Converter from "../../components/Converter";
-
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { NextSeo } from "next-seo";
+import ServiceFile from "../../components/ServiceFile";
+import ServiceImage from "../../components/ServiceImage";
+import { DESKTOP } from "../../util/mediaQuery";
+import { metaGen } from "../../util/seo";
 
-export default function Image() {
+export default function Service() {
   const isPc = useMediaQuery(DESKTOP);
-  const { t } = useTranslation("seo_image");
+  const { t } = useTranslation("seo_about");
 
   return (
     <Stack
@@ -31,13 +29,10 @@ export default function Image() {
       />
       <Stack spacing={2} sx={{ pt: 4 }} direction={isPc ? "row" : "column"}>
         <Stack sx={{ maxWidth: 350 }}>
-          <Compress />
+          <ServiceFile />
         </Stack>
         <Stack sx={{ maxWidth: 350 }}>
-          <Resize />
-        </Stack>
-        <Stack sx={{ maxWidth: 350 }}>
-          <Converter />
+          <ServiceImage />
         </Stack>
       </Stack>
     </Stack>
@@ -47,7 +42,7 @@ export default function Image() {
 export const getStaticProps = async ({ locale }) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "seo_image"])),
+      ...(await serverSideTranslations(locale, ["common", "seo_about"])),
     },
   };
 };

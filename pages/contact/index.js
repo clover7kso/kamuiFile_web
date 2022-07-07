@@ -18,8 +18,8 @@ export default function About() {
         pt: 5,
         px: isPc ? 5 : 3,
         minWidth: "100vw",
-        alignItems: "center",
         bgcolor: "#eceff5",
+        alignItems: "center",
       }}
     >
       <NextSeo
@@ -29,37 +29,37 @@ export default function About() {
           url: t("url"),
         })}
       />
-
-      <Stack spacing={2} sx={{ pt: 4 }}>
-        <Stack
-          sx={{ maxWidth: 1024, px: isPc && 2, py: 4, alignItems: "center" }}
-        >
-          <div>
-            <Image
-              style={{ borderRadius: 60 }}
-              width={120}
-              height={120}
-              objectFit="contain"
-              alt="ic_woony"
-              src={ic_woony}
-            />
-          </div>
-          <Typography
-            variant="h3"
-            sx={{ color: "#444444", my: 3, textAlign: "center" }}
-          >
-            {common.t("titleAboutMe")}
+      <Stack spacing={2} sx={{ pt: isPc && 4 }}>
+        <Stack sx={{ maxWidth: 1024, px: isPc && 2, py: 4 }}>
+          <Typography variant="h4" sx={{ my: 3 }}>
+            {common.t("titleContactAd")}
+          </Typography>
+          <Typography variant="h5" sx={{ mb: 1 }}>
+            kamuifile@gmail.com
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 3 }}>
+            {common.t("contentContactAd")}
           </Typography>
 
-          <Typography variant="body1" sx={{ mt: 2, textAlign: "center" }}>
-            {common.t("contentAboutMe")}
+          <Typography variant="h4" sx={{ my: 3 }}>
+            {common.t("titleContactBug")}
+          </Typography>
+          <Typography variant="h5" sx={{ mb: 1 }}>
+            kamuifile@gmail.com
+          </Typography>
+          <Typography variant="body2" sx={{ mb: 3 }}>
+            {common.t("contentContactBug")}
           </Typography>
 
-          <Typography variant="h5" sx={{ my: 3, textAlign: "center" }}>
-            {common.t("subtitleAboutMe")}
+          <Typography variant="h4" sx={{ my: 3 }}>
+            {common.t("titleContactMe")}
           </Typography>
-
-          <Typography variant="body2">E-mail : clover7kso@gmail.com</Typography>
+          <Typography variant="h5" sx={{ mb: 1 }}>
+            clover7kso@gmail.com
+          </Typography>
+          <Typography variant="body2">
+            {common.t("contentContactMe")}
+          </Typography>
         </Stack>
       </Stack>
     </Stack>

@@ -17,7 +17,6 @@ export default function File() {
       sx={{
         p: 5,
         minWidth: "100vw",
-        minHeight: "100vh",
         alignItems: "center",
         bgcolor: "#eceff5",
       }}

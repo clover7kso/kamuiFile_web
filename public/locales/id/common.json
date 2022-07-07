@@ -1,7 +1,7 @@
 {
     "TRANSFER":"Transfer File",
     "EDIT IMAGE":"Kompresi, Reduksi, Konversi Gambar",
-    "ABOUT":"Tentang Saya",
+    "SERVICE":"Melayani",
     "titleSend":"Kirim",
     "titleCompress":"Kompres",
     "titleResize":"Ubah ukuran",
@@ -26,7 +26,13 @@
     "btnRecv":"Mengonfirmasi",
     "done":"Selesai",
     "download":"Unduh",    
-    "copy":"Nomor disalin"
+    "copy":"Nomor disalin",
+    "titleContactAd":"Pertanyaan kemitraan",
+    "contentContactAd":"Untuk pertanyaan kemitraan, silakan hubungi kami di alamat email di atas dan kami akan mempertimbangkannya secara positif. Spesialisasi dalam iklan banner, iklan webtoon, dan viral SNS. Silahkan hubungi kami banyak.",
+    "titleContactBug":"Kesalahan dan Permintaan",
+    "contentContactBug":"Kesalahan yang terjadi saat menggunakan File Kamui & Gambar Kamui akan diperbaiki sesegera mungkin dengan mengirimkan situasi dan penjelasan spesifik ke email di atas. Selain itu, kami menerima fungsi dan peningkatan yang diperlukan untuk menggunakan layanan ini. Mohon banyak permintaan.",
+    "titleContactMe":"penyelidikan pembangunan",
+    "contentContactMe":"Woon selalu mencari proyek yang menarik. Coding dengan teman selalu menyenangkan. Jika minatnya benar, silakan kirimkan pertanyaan tentang partisipasi proyek, outsourcing, rekrutmen perusahaan, dll., dan kami akan meninjaunya secara positif. Sekarang Woon tinggal di Selatan Korea!!"
 }
 
 

@@ -1,7 +1,7 @@
 {
     "TRANSFER":"Transferir",
     "EDIT IMAGE":"Imagen Comprimir, Redimensionar, Convertir",
-    "ABOUT":"Acerca de mí",
+    "SERVICE":"Servicio",
     "titleSend":"Enviar",
     "titleCompress":"Comprimir",
     "titleResize":"Redimensionar",
@@ -26,5 +26,11 @@
     "btnRecv":"Confirmar",
     "done":"Hecho",
     "download":"Descargar",    
-    "copy":"Se copia el número"
+    "copy":"Se copia el número",
+    "titleContactAd":"Consulta de asociación",
+    "contentContactAd":"Para consultas sobre asociaciones, comuníquese con nosotros a la dirección de correo electrónico anterior y lo consideraremos positivamente. Especializado en anuncios publicitarios, anuncios webtoon y SNS viral. Por favor contáctenos mucho.",
+    "titleContactBug":"Errores y Solicitudes",
+    "contentContactBug":"Los errores que ocurran al usar Kamui File & Kamui Image se corregirán lo antes posible enviando la situación específica y la explicación al correo electrónico anterior. Además, recibimos funciones y mejoras necesarias para el uso del servicio. Muchas solicitudes por favor.",
+    "titleContactMe":"Consulta de desarrollo",
+    "contentContactMe":"Woon siempre está a la caza de proyectos interesantes. Codificar con amigos siempre es divertido. Si los intereses son correctos, envíenos consultas sobre participación en proyectos, subcontratación, contratación de empresas, etc., y lo revisaremos positivamente. ¡Ahora Woon vive en Sur Corea!"
 }

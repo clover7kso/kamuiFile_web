@@ -1,7 +1,7 @@
 {
     "TRANSFER":"파일전송",
     "EDIT IMAGE":"이미지 압축,축소,변환",
-    "ABOUT":"나의이야기",
+    "SERVICE":"서비스",
     "titleSend":"보내기",
     "titleCompress":"압축",
     "titleResize":"축소",
@@ -26,5 +26,11 @@
     "btnRecv":"받기",
     "done":"완료",
     "download":"다운로드",
-    "copy":"숫자가 복사되었습니다."
+    "copy":"숫자가 복사되었습니다.",
+    "titleContactAd":"제휴문의",
+    "contentContactAd":"제휴문의는 위 이메일로 연락 주시면 긍정적으로 검토하겠습니다. 배너 광고, 웹툰 광고, sns 바이럴 전문입니다. 많은 문의 바랍니다.",
+    "titleContactBug":"오류 및 요청",
+    "contentContactBug":"Kamui File & Kamui Image를 사용 중에 발생하는 오류는 당시 구체적인 상황과 설명을 위 이메일로 보내주시면 빠른 시일내로 고치도록 하겠습니다. 또한 서비스 이용시에 필요한 기능 및 개선사항도 받고 있습니다. 많은 요청 바랍니다.",
+    "titleContactMe":"개발문의",
+    "contentContactMe":"Woon은 항상 재미있는 프로젝트를 찾아 헤맵니다. 친구들과 코딩하는 것은 항상 즐겁습니다. 이해관계가 맞는다면 프로젝트 참여, 외주, 회사영입 등 문의를 넣어주시면 긍정적인 검토하겠습니다. 지금 Woon은 한국에 살고 있어요!!"
 }

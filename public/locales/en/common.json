@@ -1,7 +1,7 @@
 {
     "TRANSFER":"Transfer",
     "EDIT IMAGE":"Image Compress, Resize, Convert",
-    "ABOUT":"About Me",
+    "SERVICE":"Service",
     "titleSend":"Send",
     "titleCompress":"Compress",
     "titleResize":"Resize",
@@ -26,5 +26,11 @@
     "btnRecv":"Confirm",
     "done":"Done",
     "download":"Download",    
-    "copy":"Number is copied"
+    "copy":"Number is copied",
+    "titleContactAd":"Partnership inquiry",
+    "contentContactAd":"For partnership inquiries, please contact us at the above email address and we will review it positively. Specializing in banner advertisements, webtoon advertisements, and SNS viral. Please contact us a lot.",
+    "titleContactBug":"Bug report and Requests",
+    "contentContactBug":"Errors that occur while using Kamui File & Kamui Image will be corrected as soon as possible by sending the specific situation and explanation to the above email. In addition, we receive functions and improvements necessary for using the service. Many requests please.",
+    "titleContactMe":"Development inquiry",
+    "contentContactMe":"Woon is always on the hunt for interesting projects. Coding with friends is always fun. If the interests are right, please send us inquiries about project participation, outsourcing, company recruitment, etc., and we will review it positively. Now Woon is living in South Korea!!"
 }

@@ -1,10 +1,10 @@
 import { Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTranslation } from "next-i18next";
 import { DESKTOP } from "../util/mediaQuery";
-import ic_woony from "../public/ic_woony.jpeg";
+import ic_folder_open from "../public/ic_folder_open.png";
 import Image from "next/image";
 
-const AboutMe = () => {
+const ServiceFile = () => {
   const isPc = useMediaQuery(DESKTOP);
 
   const { t } = useTranslation("common");
@@ -14,36 +14,29 @@ const AboutMe = () => {
       <Stack spacing={2} sx={{ alignItems: "center", minWidth: 300 }}>
         <Stack sx={{ alignItems: "center" }}>
           <Image
-            style={{ borderRadius: 20 }}
             width={89}
             height={89}
             objectFit="contain"
-            alt="ic_woony"
-            src={ic_woony}
+            alt="ic_folder_open"
+            src={ic_folder_open}
           />
           <Typography variant="h5" sx={{ color: "#444444" }}>
-            {t("titleAboutMe")}
+            {t("titleAboutFile")}
           </Typography>
           <Typography
             variant="body8"
             sx={{ color: "#aaaaaa", textAlign: "center" }}
           >
-            {t("subtitleAboutMe")}
+            {t("subtitleAboutFile")}
           </Typography>
 
           <Typography variant="body2" sx={{ mt: 2 }}>
-            {t("contentAboutMe")}
+            {t("contentAboutFile")}
           </Typography>
-
-          <Stack sx={{ width: "100%" }}>
-            <Typography variant="body2" sx={{ mt: 2, color: "#aaaaaa" }}>
-              E-mail : kamuifile@gmail.com
-            </Typography>
-          </Stack>
         </Stack>
       </Stack>
     </Paper>
   );
 };
 
-export default AboutMe;
+export default ServiceFile;
