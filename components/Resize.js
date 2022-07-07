@@ -40,7 +40,7 @@ const Resize = () => {
 
   const { t } = useTranslation("common");
 
-  const resizeImage = function (file, factor, index) {
+  const resizeImage = (file, factor, index) => {
     let reader = new FileReader();
     reader.onloadend = async () => {
       let orig_src = new Image();
@@ -111,6 +111,33 @@ const Resize = () => {
               "image/png": [".jpeg", ".jpg", ".png", ".webp", ".bmp"],
             }}
             onChange={async (dropFiles) => {
+              dropFiles.map((item, index) => {
+                let reader = new FileReader();
+                reader.onloadend = async () => {
+                  let orig_src = new Image();
+                  orig_src.src = reader.result;
+                  orig_src.onload = () => {
+                    setFileInfo((prev) => {
+                      let newArray = [...prev.infos];
+                      newArray[index] = {
+                        ...newArray[index],
+                        preview: reader.result,
+                        orgWidth: orig_src.width,
+                        orgHeight: orig_src.height,
+                        resizeWidth: Math.floor(
+                          orig_src.width * ((100 - resize) / 100)
+                        ),
+                        resizeHeight: Math.floor(
+                          orig_src.height * ((100 - resize) / 100)
+                        ),
+                      };
+                      return { infos: newArray };
+                    });
+                  };
+                };
+                reader.readAsDataURL(item);
+              });
+
               setFiles({ files: dropFiles });
               setFileInfo({
                 infos: dropFiles.map((item) => {
@@ -121,28 +148,6 @@ const Resize = () => {
                   };
                 }),
               });
-
-              dropFiles.map((item, index) => {
-                let reader = new FileReader();
-                reader.onloadend = async () => {
-                  let orig_src = new Image();
-                  orig_src.src = reader.result;
-                  setFileInfo((prev) => {
-                    let newArray = prev.infos;
-                    newArray[index] = {
-                      ...newArray[index],
-                      preview: reader.result,
-                      orgWidth: orig_src.width,
-                      orgHeight: orig_src.height,
-                      resizeWidth: orig_src.width * ((100 - resize) / 100),
-                      resizeHeight: orig_src.height * ((100 - resize) / 100),
-                    };
-                    return { infos: newArray };
-                  });
-                };
-                reader.readAsDataURL(item);
-              });
-              setRefresh((prev) => !prev);
             }}
           />
         )}
@@ -195,9 +200,17 @@ const Resize = () => {
                       }}
                     >
                       <Typography variant="body2" noWrap>
-                        {item.orgWidth}x{item.orgHeight}
-                        {" -> "} {item.resizeWidth}x{item.resizeHeight}{" "}
+                        {item.orgWidth && item.orgHeight
+                          ? item.orgWidth +
+                            "x" +
+                            item.orgHeight +
+                            " -> " +
+                            item.resizeWidth +
+                            "x" +
+                            item.resizeHeight
+                          : "Loading..."}
                       </Typography>
+
                       <Progress percentage={item.progress} />
                       <Stack direction="row">
                         <Typography
