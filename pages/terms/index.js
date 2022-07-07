@@ -7,7 +7,7 @@ import { metaGen } from "../../util/seo";
 
 export default function About() {
   const isPc = useMediaQuery(DESKTOP);
-  const { t } = useTranslation("seo_about");
+  const { t } = useTranslation("seo_service");
 
   return (
     <Stack

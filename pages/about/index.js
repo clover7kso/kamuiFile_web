@@ -9,7 +9,7 @@ import ic_woony from "../../public/ic_woony.jpeg";
 
 export default function About() {
   const isPc = useMediaQuery(DESKTOP);
-  const { t } = useTranslation("seo_about");
+  const { t } = useTranslation("seo_service");
   const common = useTranslation("common");
 
   return (
