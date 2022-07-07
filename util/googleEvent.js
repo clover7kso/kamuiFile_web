@@ -9,6 +9,7 @@ export const mSend = () => {
       }
     },
   });
+  window.gtag("event", "file_send");
 };
 
 export const mRecv = () => {
@@ -22,6 +23,7 @@ export const mRecv = () => {
       }
     },
   });
+  window.gtag("event", "file_recv");
 };
 
 export const mCompress = () => {
@@ -35,6 +37,7 @@ export const mCompress = () => {
       }
     },
   });
+  window.gtag("event", "img_compress");
 };
 
 export const mConvert = () => {
@@ -48,6 +51,7 @@ export const mConvert = () => {
       }
     },
   });
+  window.gtag("event", "img_convert");
 };
 
 export const mResize = () => {
@@ -61,4 +65,5 @@ export const mResize = () => {
       }
     },
   });
+  window.gtag("event", "img_resize");
 };
